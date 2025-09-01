@@ -1,0 +1,129 @@
+@use 'lib' as *;
+
+.passes {
+	$self: &;
+
+	padding: fluid(50px, 20px) 0 fluid(50px, 20px) 0;
+
+	&__title {
+		margin-bottom: fluid(50px, 20px);
+	}
+	&__slider-wrap {
+		position: relative;
+	}
+	&__card {
+		display: grid;
+		grid-template-columns: minmax(340px, 420px) 1fr;
+		align-items: center;
+		gap: 43px;
+		padding: 28px 0 28px 50px;
+		background-color: #F3F3F3;
+		border-radius: 10px;
+		height: 100%;
+		@include media("<=md") {
+			grid-template-columns: 1fr;
+			padding: 30px 20px 20px;
+			gap: 10px;
+		}
+		&-step {
+			font-size: 16px;
+			font-weight: 500;
+			color: #939393;
+			margin-bottom: 20px;
+		}
+		&-title {
+			font-size: fluid(25px, 20px);
+			margin-bottom: 20px;
+		}
+		&-text {
+			font-size: fluid(16px, 14px);
+			font-weight: 500;
+			line-height: 140%;
+			color: var(--grey);
+		}
+		&-pic {
+			cursor: pointer;
+		}
+	}
+	&__swiper-slide.swiper-slide {
+		height: auto;
+	}
+	&__slider-navigation {
+		@include media("<=lg") {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 13px;
+			margin-top: 20px;
+		}
+	}
+	&__swiper-button.swiper-button-prev,
+	&__swiper-button.swiper-button-next {
+		width: 45px;
+		height: 45px;
+		border-radius: 50%;
+		border: 1px solid #2F3540;
+		transition: border-color .3s;
+		@include media("<=lg") {
+			position: static;
+			margin-top: 0;
+		}
+		@include media("<=md") {
+			width: 30px;
+			height: 30px;
+		}
+		svg {
+			width: 27px;
+			height: 27px;
+			stroke: #2F3540;
+			transition: stroke .3s;
+			@include media("<=md") {
+				width: 20px;
+				height: 20px;
+			}
+		}
+		&::before,
+		&::after {
+			content: none;
+		}
+		&:hover {
+			border-color: var(--yellow);
+		}
+	}
+	&__swiper-button.swiper-button-next {
+		right: -70px;
+		@include media("<=xlg") {
+			right: -22px;
+		}
+		svg {
+			transform: rotate(180deg);
+		}
+	}
+	&__swiper-button.swiper-button-prev {
+		left: -70px;
+		@include media("<=xlg") {
+			left: -22px;
+		}
+	}
+	&__swiper-button.swiper-button-prev,
+	&__swiper-button.swiper-button-next {
+		&:hover svg {
+			stroke: var(--yellow);
+		}
+	}
+	&__swiper-pagination.swiper-pagination.swiper-pagination-bullets.swiper-pagination-horizontal {
+		bottom: -40px;
+		@include media("<=lg") {
+			display: none;
+		}
+		.swiper-pagination-bullet {
+			width: 9px;
+			height: 9px;
+			background-color: #DEDEDE;
+			opacity: 1;
+		}
+		.swiper-pagination-bullet-active {
+			background-color: var(--yellow);
+		}
+	}
+}

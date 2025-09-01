@@ -1,0 +1,80 @@
+@use 'lib' as *;
+
+.top {
+	$self: &;
+
+	padding: fluid(100px, 50px) 0 fluid(50px, 20px) 0;
+
+	&__grid {
+		position: relative;
+		display: grid;
+		grid-template-columns: minmax(450px, 824px) minmax(300px, 420px);
+		gap: 40px;
+		@include media("<=md") {
+			grid-template-columns: 1fr;
+			gap: 22px;
+		}
+	}
+	&__title {
+		font-size: fluid(68px, 33px);
+		@include media("<=md") {
+			margin-bottom: 22px;
+		}
+		.title__decor {
+			display: inline-block;
+			line-height: 1;
+			&::before {
+				height: 14px;
+				bottom: 10px;
+				@include media("<=md") {
+					height: 6px;
+					bottom: 6px;
+				}
+			}
+		}
+	}
+	&__text {
+		font-size: fluid(20px, 16px);
+		display: flex;
+		gap: 20px;
+		color: var(--dark);
+		margin-top: 40px;
+		line-height: 150%;
+		@include media("<=md") {
+			margin-top: 22px;
+			gap: 10px;
+		}
+		&::before {
+			content: '';
+			display: block;
+			width: 25px;
+			min-width: 25px;
+			height: 25px;
+			border-radius: 50%;
+			background-color: var(--yellow);
+			margin-top: 3px;
+			@include media("<=md") {
+				width: 10px;
+				height: 10px;
+				min-width: 10px;
+				margin-top: 5px;
+			}
+		}
+	}
+	&__pic {
+		position: absolute;
+		top: 0;
+		right: 0;
+		max-width: 420px;
+		@include media("<=md") {
+			position: static;
+			max-width: 110px;
+		}
+	}
+	&__form-wrap {
+		margin-top: 60px;
+		@include media("<=sm") {
+			margin-top: 22px;
+		}
+	}
+}

@@ -1,0 +1,47 @@
+@use 'lib' as *;
+
+.benefits {
+	$self: &;
+
+	padding: fluid(50px, 20px) 0 fluid(50px, 20px) 0;
+
+	&__title {
+		margin-bottom: fluid(50px, 20px);
+	}
+	&__items {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+		gap: 40px;
+		@include media("<=sm") {
+			grid-template-columns: 1fr;
+			gap: 20px;
+		}
+	}
+	&__item {
+		display: flex;
+		gap: 20px;
+		@include media("<=sm") {
+			gap: 14px;
+		}
+	}
+	&__item-icon-img {
+		width: 45px;
+		height: 45px;
+		min-width: 45px;
+		@include media("<=sm") {
+			width: 30px;
+			height: 30px;
+			min-width: 30px;
+		}
+	}
+	&__item-title {
+		font-size: fluid(22px, 20px);
+	}
+	&__item-text {
+		font-size: fluid(16px, 14px);
+		line-height: 140%;
+		font-weight: 500;
+		color: var(--grey);
+		margin-top: 16px;
+	}
+}

@@ -16,6 +16,8 @@
 @use "../blocks/**/*.scss";
 @use "../../node_modules/swiper/swiper";
 @use "../../node_modules/swiper/modules/effect-fade";
+@use "../../node_modules/swiper/modules/navigation";
+@use "../../node_modules/swiper/modules/pagination";
 @use "../../node_modules/@fancyapps/ui/dist/fancybox/fancybox.css";
 
 body, html {
