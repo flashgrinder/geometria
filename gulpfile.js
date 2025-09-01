@@ -1,43 +1,38 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
+const $ = require('gulp-load-plugins')({ pattern: ['*', '!sass'] });
 const isRemote = process.argv.indexOf('--remote') !== -1;
 const isSync = process.argv.indexOf('--sync') !== -1;
 const isDev = process.argv.indexOf('--dev') !== -1;
 const isProd = !isDev;
 const version = +isProd && Date.now();
-const cheerio = require('gulp-cheerio');
 
-const $ = require('gulp-load-plugins')({
-    pattern: ['*', '!sass']
-});
-
-const data = require('gulp-data');
-const fs = require('fs');
-const nunjucksRender = require('gulp-nunjucks-render');
-const rename = require('gulp-rename');
-
-const postcss = require('gulp-postcss');
-const cssnano = require('cssnano');
-const purgecss = require('gulp-purgecss');
-
+// console.log(JSON.stringify($));
 let pckg = require('./package.json');
 let webconf = {
     output: {
         filename: 'common.js'
     },
     module: {
-        rules: [{
-            test: /\.js$/,
-            exclude: /(node_modules|bower_components)/,
-            use: {
-                loader: 'babel-loader',
-                options: { presets: ['@babel/preset-env'] }
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: { presets: ['@babel/preset-env'] }
+                }
+            },
+            {
+                test: /\.css$/i,
+                use: ['style-loader', 'css-loader']
             }
-        }]
+        ]
     },
     mode: isDev ? 'development' : 'production',
     devtool: isDev ? 'eval-source-map' : false
 };
+
 
 let pth = {
     pbl: {
@@ -50,26 +45,27 @@ let pth = {
     },
     src: {
         root: './src/',
-        html: './src/templates/pages/**/*.njk',
+        html: './src/**/[^_]*.html',
         js: './src/js/common.js',
         css: './src/scss/style.scss',
         scss: './src/scss/lib/',
-        img: './src/img/**',
-        icn: './src/img/svg/**/*.svg',
+        // img: './src/images/**/!(icon-*.svg|shape-*.svg)',
+        img: './src/img/!(icons){,/**}',
+        icn: './src/img/icons/**/*.svg',
         fnts: './src/fonts/**/*.*',
         tmpl: './src/templates/'
     },
     wtch: {
-        html: './src/templates/**/*.+(njk|json)',
-        js: ['./src/js/**/*.js', './src/blocks/**/(*.js|*.json)'],
-        css: ['./src/scss/**/*.scss', './src/blocks/**/*.scss'],
-        img: ['./src/img/**', '!./src/img/svg/**'],
-        icn: './src/img/svg/**/*.svg',
+        html: './src/**/*.html',
+        js: ['./src/js/**/*.js','./src/blocks/**/(*.js|*.json)'],
+        css: ['./src/scss/**/*.scss','./src/blocks/**/*.scss'],
+        img: ['./src/img/**', '!./src/img/icons/**'],
+        icn: './src/img/icons/**/*.svg',
         fnts: './src/fonts/**/*.*'
     }
 };
 
-function swallowError(error) {
+function swallowError (error) {
     console.log(error.toString());
     this.emit('end');
 }
@@ -84,12 +80,12 @@ function js() {
         .on('error', swallowError)
         .pipe(gulp.dest(pth.pbl.js))
         .pipe($.if(isSync, $.browserSync.stream()))
-        .on('end', function () {
-            if (isRemote) deploy(true, 'js');
+        .on('end', function() {
+            if(isRemote) deploy(true, 'js');
         });
 }
 
-function jslib() {
+function jslib () {
     let paths = [];
     if (Object.keys(pckg.externalJs).length !== 0) {
         Object.entries(pckg.externalJs).forEach(function ([key, value], index) {
@@ -102,41 +98,19 @@ function jslib() {
     return gulp.src('.', { allowEmpty: true });
 }
 
-const path = require('path');
-
-function imagesAlt() {
-    return gulp.src('./docs/**/*.html')
-        .pipe(cheerio({
-            run: function ($) {
-                $('img').each(function () {
-                    let alt = $(this).attr('alt');
-                    const src = $(this).attr('src');
-
-                    if ((!alt || alt.trim() === '') && src && src.includes('/img/')) {
-                        const filename = src.split('/').pop().split('.')[0];
-                        const altText = filename.replace(/[-_]/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-                        $(this).attr('alt', altText);
-                    }
-                });
-            },
-            parserOptions: {
-                decodeEntities: false
-            }
-        }))
-        .pipe(gulp.dest('./docs/'));
-}
-
 function html() {
     return gulp.src(pth.src.html)
-        .pipe(data(() => {
-            const dataPath = path.resolve(__dirname, 'src/templates/data.json');
-            return fs.existsSync(dataPath) ? JSON.parse(fs.readFileSync(dataPath)) : {};
-        }))
-        .pipe(nunjucksRender({
-            path: [path.resolve(__dirname, 'src/templates')]
-        }))
+        .pipe($.fileInclude({ prefix: '@@', basepath: pth.src.tmpl }))
         .on('error', swallowError)
-        .pipe(rename({ extname: '.html' }))
+        // .pipe($.if(isProd, $.typograf({
+        // 	locale: ['ru', 'en-US'],
+        // 	htmlEntity: { type: 'digit' },
+        // 	safeTags: [
+        // 		['<\\?php', '\\?>'],
+        // 		['<no-typography>', '</no-typography>'],
+        // 	],
+        // })))
+        // .on('error', swallowError)
         .pipe($.replace(/(\.(css|js)\?v=)\d+\b/g, `$1${version}`))
         .pipe(gulp.dest(pth.pbl.html))
         .pipe($.if(isSync, $.browserSync.stream()));
@@ -149,29 +123,17 @@ function styles() {
         .pipe(sass())
         .on('error', swallowError)
         .pipe($.autoprefixer({
-            overrideBrowserslist: ["last 4 version"],
+            overrideBrowserslist: [ "last 4 version" ],
             cascade: false,
             grid: true
         }))
         .pipe($.if(isProd, $.groupCssMediaQueries()))
-
-        // Удаляем неиспользуемые стили
-        .pipe($.if(isProd, purgecss({
-            content: [
-                './src/templates/**/*.njk',
-                './src/js/**/*.js'
-            ],
-            defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
-        })))
-
-        // Минификация через cssnano
-        .pipe($.if(isProd, postcss([cssnano()])))
-
+        .pipe($.if(isProd, $.cleanCss({ compatibility: { properties: { zeroUnits: false }}})))
         .pipe($.if(isDev, $.sourcemaps.write()))
         .pipe(gulp.dest(pth.pbl.css))
         .pipe($.if(isSync, $.browserSync.stream()))
-        .on('end', function () {
-            if (isRemote) deploy(true, 'css');
+        .on('end', function() {
+            if(isRemote) deploy(true, 'css');
         });
 }
 
@@ -195,7 +157,7 @@ function icons() {
                     svgo: {
                         plugins: [
                             { name: 'preset-default' },
-                            { name: 'removeAttrs', params: { attrs: '*:(fill|data-*|id|class|style|stroke)' } },
+                            { name: 'removeAttrs', params: { attrs: '*:(fill|data-*|id|class|style|stroke)' }},
                         ]
                     }
                 }]
@@ -203,13 +165,13 @@ function icons() {
             mode: {
                 symbol: {
                     dest: './',
-                    sprite: 'sprite.svg',
-                    example: !isProd
+                    sprite: '_sprite.svg',
+                    example: ! isProd
                 }
             }
         }))
         .on('error', swallowError)
-    // .pipe(gulp.dest(pth.src.tmpl))
+        .pipe(gulp.dest(pth.src.tmpl))
 };
 
 function fonts() {
@@ -234,24 +196,24 @@ function deploy(e, ...args) {
         log: $.fancyLog
     });
 
-    args = args.length ? args : ['js', 'css'];
-    args.forEach(function (item, i) {
-        this[i] = pth.pbl[item] + '*.' + item;
+    args = args.length ? args : ['js','css'];
+    args.forEach(function(item, i) {
+        this[i] = pth.pbl[item]+'*.'+item;
     }, args);
 
     if (process.argv.indexOf('--all') !== -1) {
-        return gulp.src(pth.pbl.root + '**', { base: pth.pbl.root })
+        return gulp.src(pth.pbl.root+'**', {base: pth.pbl.root})
             .pipe(conn.newerOrDifferentSize(pckg.ftp.workdir))
             .pipe(conn.dest(pckg.ftp.workdir));
     } else {
-        return gulp.src(args, { base: pth.pbl.root, buffer: false })
+        return gulp.src(args, {base: pth.pbl.root, buffer: false})
             .pipe(conn.newerOrDifferentSize(pckg.ftp.workdir))
             .pipe(conn.dest(pckg.ftp.workdir));
     }
 }
 
 function watch() {
-    if (isSync) {
+    if(isSync) {
         $.browserSync.init({
             server: { baseDir: pth.pbl.root }
         });
@@ -264,11 +226,7 @@ function watch() {
     gulp.watch(pth.wtch.fnts, fonts);
 }
 
-const build = gulp.series(
-    isProd ? clear : done => done(),
-    gulp.parallel(html, js, jslib, styles, images, icons, fonts),
-    isProd ? imagesAlt : done => done()
-);
+const build = gulp.series(clear, gulp.parallel(html, js, jslib, styles, images, icons, fonts));
 
 exports.build = build;
 exports.watch = gulp.series(build, watch);
