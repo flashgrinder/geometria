@@ -27,4 +27,7 @@ body, html {
 	font-family: var(--font, sans-serif);
 	display: flex;
 	flex-flow: column nowrap;
+    @include media("<=sm") {
+        font-size: 14px;
+    }
 }

@@ -2,5 +2,6 @@
 @use "variables" as *;
 @use "mixins" as *;
 
-@include font-face("Montserrat-Medium", "Montserrat", 500);
-@include font-face("Montserrat-SemiBold", "Montserrat", 600);
+@include font-face("Geologica-Light", "Geologica", 300);
+@include font-face("Geologica-Regular", "Geologica", 400);
+@include font-face("Unbounded-Regular", "Unbounded", 400);

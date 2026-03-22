@@ -1,0 +1,144 @@
+@use 'lib' as *;
+
+.services {
+    padding: fluid(150px, 75px) 0;
+}
+
+.services__heading {
+    text-transform: uppercase;
+    margin-bottom: 45px;
+}
+
+.services__list {
+    width: 100%;
+}
+
+.services__item {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(300px, 570px) minmax(300px, 880px) minmax(200px, 468px);
+    overflow: hidden;
+    border-top: 1px solid transparent;
+    transition: background 0.5s ease;
+    @include media("<=xxlg") {
+        grid-template-columns: minmax(300px, 370px) minmax(300px, 880px) minmax(200px, 468px);
+    }
+    @include media("<=md") {
+        display: flex;
+        flex-direction: column;
+        padding: 20px 15px;
+        gap: 20px;
+        transition: padding 0.5s ease;
+    }
+}
+
+.services__item::before {
+    content: '';
+    position: absolute;
+    background: var(--main-gradient);
+    opacity: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    user-select: none;
+}
+
+.services__item:not(.is-active) {
+    border-top: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.services__item:first-child {
+    border-top: none;
+} 
+
+.services__item.is-active {
+    @include media("<=md") {
+        padding-bottom: 120px;
+    }
+}
+
+.services__icon-box {
+    position: relative;
+    padding-top: 24px;
+    padding-right: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    @include media("<=md") {
+        order: 1;
+        padding: 0;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+    }
+}
+
+.services__icon {
+    display: block;
+    opacity: 0;
+    max-width: 500px;
+    @include media("<=md") {
+        max-width: 164px;
+    }
+}
+
+.services__title {
+    position: relative;
+    color: var(--main-black);
+    padding: 100px 25px 100px fluid(100px, 15px, 1920px);
+    border-right: 1px solid rgba(0, 0, 0, 0.25);
+    border-left: 1px solid rgba(0, 0, 0, 0.25);
+    transition: color 0.5s ease;
+    @include media("<=xxxlg") {
+        font-size: 40px;
+        padding: 100px 25px 100px fluid(25px, 15px, 1680px);
+    }
+    @include media("<=xxlg") {
+        font-size: 36px;
+    }
+    @include media("<=md") {
+        padding: 0;
+        font-size: 30px;
+        border-right: none;
+        border-left: none;
+    }
+}
+
+.services__description {
+    position: relative;
+    padding: 100px 45px 100px fluid(60px, 15px, 1920px);
+    transition: color 0.5s ease;
+    @include media("<=xxxlg") {
+        padding: 100px 25px 100px fluid(25px, 15px, 1680px);
+    }
+    @include media("<=md") {
+        padding: 0;
+    }
+}
+
+/* Стили для выделенного элемента */
+.services__item.is-active::before {
+    opacity: 1;
+}
+
+.services__item.is-active .services__icon {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.services__item.is-active .services__title {
+    border-right: 1px solid rgba(255, 255, 255, 0.25);
+    border-left: 1px solid rgba(255, 255, 255, 0.25);
+    @include media("<=md") {
+        border-right: none;
+        border-left: none;
+    }
+}
+
+.services__item.is-active .services__title,
+.services__item.is-active .services__description {
+    color: var(--white);
+}
