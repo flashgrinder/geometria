@@ -3,38 +3,88 @@
 .form {
 	$self: &;
 
-	&__inner {
-		display: flex;
-		align-items: center;
-		gap: 20px;
-		@include media("<=sm") {
-			flex-direction: column;
-		}
-	}
-	&__label {
-		@include media("<=sm") {
-			width: 100%;
-		}
-	}
+	&__field {
+        position: relative;
+        display: block;
+        width: 100%;
+        .form__input:focus,
+        .form__input:target,
+        .form__input--textarea:focus,
+        .form__input--textarea:target {
+            border-bottom: 1px solid var(--main-green);
+        }
+    }
+    &__field + &__field {
+        margin-top: 20px;
+    }
+    
 	&__input {
-		padding: 21px 30px;
-		background-color: #E9E9E9;
-		border-radius: 4px;
+		padding: 18px 30px;
+		background-color: var(--main-black);
 		width: 100%;
-		&::placeholder {
-			color: #5F646C;
-			font-size: 16px;
+        font-size: 18px;
+        color: var(--white);
+        border-bottom: 1px solid rgba(242, 242, 242, 0.75);
+		transition: border .3s ease;
+        outline: none;
+        &::placeholder {
+			color: rgba(242, 242, 242, 0.76);
+			font-size: 18px;
+            text-transform: uppercase;
+            vertical-align: bottom;
 		}
+        &:hover {
+            border-bottom: 1px solid var(--main-green);
+        }
+        &.wpcf7-not-valid {
+            border-bottom: 1px solid var(--error-border);
+        }
 	}
 	&__btn {
-		@include media("<=sm") {
-			width: 100%;
-		}
+        margin-top: 20px;
+        width: 100%;
 	}
-	&__agree {
-		font-size: 12px;
-		color: #878787;
+    &__actions {
+        margin-top: 20px;
+    }
+    &__accept + &__accept {
+        margin-top: 10px;
+    }
+	&__accept-text {
+		font-size: 18px;
+		color: var(--white);
 		margin-top: 10px;
-		font-weight: 500;
+        margin-left: 10px;
+        font-weight: 300;
+        a {
+            background: var(--main-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: underline;
+            &:hover {
+                -webkit-text-fill-color: rgba(161, 177, 106, 1);
+            }
+        }
 	}
+
+    .wpcf7-response-output {
+        display: none !important;
+    }
+    .wpcf7-not-valid-tip {
+        color: red;
+        font-size: 12px;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        bottom: -20px;
+    }
+}
+
+.wpcf7 form.form.invalid .wpcf7-response-output,
+.wpcf7 form.form.unaccepted .wpcf7-response-output {
+    border: 1px solid var(--color-yellow);
+}
+
+.wpcf7 form.form.sent .wpcf7-response-output {
+    border-color: var(--success-border);
 }

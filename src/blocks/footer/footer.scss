@@ -1,0 +1,136 @@
+@use 'lib' as *;
+
+.footer {
+    padding: 50px 0 10px;
+    @include media("<=md") {
+        padding: 75px 0 20px;
+    }
+}
+
+.footer__wrap,
+.footer__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include media("<=md") {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+}
+
+.footer__menu.menu {
+    @include media("<=sm") {
+        font-size: 14px;
+    }
+}
+
+.footer__menu .footer__menu-list {
+    @include media("<=xlg") {
+        gap: 25px;
+    }
+    @include media("<=sm") {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+}
+
+.footer__col--first {
+    @include media("<=xlg") {
+        order: 1;
+    }
+}
+
+.footer__col--center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include media("<=xlg") {
+        align-items: flex-start;
+    }
+}
+
+.footer__col--last {
+    @include media("<=xlg") {
+        order: -1;
+    }
+}
+
+.footer__bottom {
+    margin-top: 16px;
+    @include media("<=xlg") {
+        margin-top: 20px;
+    }
+}
+
+.footer__req,
+.footer__copyright {
+    font-size: 14px;
+    font-weight: 300;
+    @include media("<=md") {
+        font-size: 12px;
+        color: rgba(0, 0, 0, 0.75);
+    }
+}
+
+.footer__policy {
+    font-size: 18px;
+    font-weight: 300;
+    transition: color 0.3s ease;
+    @include media("<=xlg") {
+        font-size: 16px;
+    }
+    @include media("<=md") {
+        font-size: 14px;
+        color: rgba(0, 0, 0, 0.75);
+    }
+}
+
+.footer__policy:hover {
+    color: #80A87B;
+}
+
+.footer__info {
+    display: flex;
+    gap: 34px;
+    @include media("<=xlg") {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+.footer__socials {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer__contacts {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer__contact {
+    font-family: var(--font-title);
+    text-transform: uppercase;
+    color: #80A87B;
+    transition: color .3s ease;
+}
+
+.footer__contact:hover {
+    color: var(--text);
+}
+
+.footer__actions {
+    @include media("<=md") {
+        width: 100%;
+    }
+}
+
+.footer__btn {
+    @include media("<=md") {
+        font-size: 14px;
+        width: 100%;
+    }
+}

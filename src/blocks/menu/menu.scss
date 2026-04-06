@@ -1,0 +1,23 @@
+@use 'lib' as *;
+
+.menu {
+    font-family: var(--font-title);
+    font-weight: 400;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.menu__list {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.menu__link {
+    color: var(--text);
+    transition: color 0.3s ease;
+}
+
+.menu__link:hover {
+    color: #80A87B;
+}

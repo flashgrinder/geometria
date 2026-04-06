@@ -1,0 +1,172 @@
+@use 'lib' as *;
+
+.formula__subtitle {
+	font-size: 20px;
+	margin-bottom: 20px;
+    color: rgba(0, 0, 0, 0.75);
+    max-width: 706px;
+    text-align: right;
+    @include media("<=sm") {
+        font-size: 14px;
+        max-width: 260px;
+        margin-bottom: 10px;
+    }
+}
+
+.formula__equation {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	margin-bottom: 60px;
+}
+
+.formula__row-wrap,
+.formula__row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.formula__row-wrap {
+    position: relative;
+    gap: 53px;
+     @include media("<=sm") {
+        gap: 11px;
+    }
+}
+
+.formula__row--first {
+    align-items: flex-end;
+    flex-direction: column;
+    margin-left: 0;
+    max-width: 715px;
+    @include media("<=sm") {
+        max-width: 273px;
+    }
+}
+
+.formula__row--result {
+    align-self: center;
+    gap: 30px;
+    @include media("<=sm") {
+        gap: 15px;
+    }
+}
+
+.formula__term {
+    text-transform: uppercase;
+    line-height: 1;
+    background: var(--background);
+    z-index: 1;
+}
+
+.formula__operator {
+    width: 145px;
+    height: 93px;
+    border-radius: 50px;
+    background: var(--main-gradient);
+    font-size: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    @include media("<=sm") {
+        width: 73px;
+        height: 46px;
+        font-size: 18px;
+    }
+}
+
+.formula__operator span {
+  color: var(--white);
+  line-height: 1;
+}
+
+.formula__operator--multiply {
+    position: relative;
+}
+
+.formula__operator--multiply::before {
+    content: '';
+    position: absolute;
+    right: -6px;
+    width: 1024px;
+    border: 3px solid var(--main-green);
+    border-radius: 50px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    height: 100px;
+    pointer-events: none;
+    @include media("<=sm") {
+        height: 50px;
+        border-width: 1px;
+        r: -4px;
+    }
+}
+
+.formula__operator--equals {
+    margin-top: -30px;
+    @include media("<=sm") {
+        margin-top: 0;
+    }
+}
+
+.formula__wrap-result {
+    position: relative;
+    z-index: 2;
+}
+
+.formula__result {
+    font-size: fluid(350px, 80px, 1920px, 960px);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    line-height: 1;
+    display: block;
+    animation: formulaPulse 2s ease-in-out infinite;
+}
+
+.formula__btn {
+    align-self: center;
+    max-width: 980px;
+    width: 100%;
+    margin: 20px auto 0;
+    height: 60px;
+    @include media("<=sm") {
+        font-size: 14px;
+        height: 50px;
+        min-width: 100%;
+        margin-top: 0;
+    }
+}
+
+.formula__btn--desktop {
+    @include media("<=sm") {
+        display: none;
+    }
+}
+
+.formula__btn--mobile {
+    display: none;
+    @include media("<=sm") {
+        display: block;
+    }
+}
+
+.formula__decoration {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  pointer-events: none;
+    @include media("<=xlg") {
+        width: 40%;
+    }
+    @include media("<=sm") {
+        width: 32%;
+        top: auto;
+        bottom: -250px;
+        right: -28px;
+    }
+}

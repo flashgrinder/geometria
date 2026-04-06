@@ -1,0 +1,31 @@
+@keyframes formulaPulse {
+  0%, 100% {
+	transform: scale(1);
+  }
+  50% {
+	transform: scale(1.02);
+  }
+}
+
+@keyframes formulaLineDraw {
+  from {
+	stroke-dasharray: 1000;
+	stroke-dashoffset: 1000;
+  }
+  to {
+	stroke-dasharray: 1000;
+	stroke-dashoffset: 0;
+  }
+}
+
+@keyframes heroBlurReveal {
+    0% {
+        filter: blur(2px);
+    }
+    50% {
+        filter: blur(0px);
+    }
+    100% {
+        filter: blur(2px);
+    }
+}

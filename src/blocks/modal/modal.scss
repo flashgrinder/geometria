@@ -1,0 +1,159 @@
+@use 'lib' as *;
+
+.modal {
+    $self: &;
+
+    &.hystmodal::before {
+        background: rgba(242, 242, 242, 1);
+    }
+    &__body.hystmodal__window {
+        position: relative;
+        max-width: 1800px;
+        width: 100%;
+        border-radius: 30px;
+        border: 1px solid var(--main-green);
+        padding: 100px 130px 100px 60px;
+        overflow: hidden;
+        background-image: url(../img/form/bg-form-thanks.webp);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color: var(--white);
+        background-position: center;
+        @include media("<=lg") {
+            padding: 50px 30px;
+        }
+    }
+    &__close.hystmodal__close {
+        right: 40px;
+        top: 40px;
+    }
+    &__title {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        @include media("<=lg") {
+            justify-content: center;
+            align-items: center;
+        }
+        &::before {
+            content: "";
+            position: absolute;
+            right: -90px;
+            width: 1800px;
+            border: 3px solid var(--main-green);
+            border-radius: 50px;
+            top: 58%;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+            height: 100px;
+            pointer-events: none;
+            z-index: 0;
+            @include media("<=xxxlg") {
+                height: 74px;
+            }
+            @include media("<=xlg") {
+                height: 48px;
+            }
+            @include media("<=lg") {
+                content: none;
+            }
+        }
+    }
+    &__header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        @include media("<=lg") {
+            justify-content: center;
+            align-items: center;
+        }
+    }
+    &__subtitle {
+        text-transform: uppercase;
+        text-align: center;
+    }
+    &__subtitle--first {
+        max-width: 911px;
+        text-align: center;
+        margin-top: 50px;
+        @include media("<=lg") {
+            align-self: center;
+            margin-top: 30px;
+        }
+    }
+    &__subtitle--second {
+        position: relative;
+        background: var(--main-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    &__subtitle + &__subtitle {
+        margin-top: 20px;
+    }
+    &__thanks-btn {
+        margin: 50px auto 0;
+        width: max-content;
+        @include media("<=md") {
+            font-size: 16px;
+            width: 100%;
+        }
+    }
+}
+
+.modal.modal--thanks {
+    .modal__word-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @include media("<=lg") {
+            flex-direction: column;
+            gap: 20px;
+        }
+    }
+    .modal__word {
+        position: relative;
+        background: var(--white);
+        text-transform: uppercase;
+        z-index: 2;
+        @include media("<=xxxlg") {
+            font-size: 80px;
+        }
+        @include media("<=xxlg") {
+            font-size: 60px;
+        }
+        @include media("<=lg") {
+            font-size: 40px;
+            text-align: center;
+        }
+        @include media("<=md") {
+            font-size: 32px;
+        }
+    }
+    .modal__word--second {
+        background: var(--main-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        align-self: flex-end;
+        line-height: 1;
+        &::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: var(--white);
+            pointer-events: none;
+            z-index: 1;
+        }
+        span {
+            position: relative;
+            z-index: 2;
+        }
+        @include media("<=lg") {
+            align-self: center;
+            margin-top: 20px;
+        }
+    }
+}

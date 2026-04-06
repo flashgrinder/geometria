@@ -4,12 +4,17 @@
     --min-width: 375px;
 
 	--main-black: #000000;
+	--main-green: #80A87B;
 	--main-gradient: linear-gradient(90deg, #80A87B 0%, #A1B16A 100%);
 	--background: rgba(242, 242, 242, 1);
     --text: #000;
     --white: #fff;
     --font: "Geologica", sans-serif;
     --font-title: "Unbounded", sans-serif;
+
+    --success-border: #699E4A;
+	--error-border: #D1493F;
+	--color-yellow: #f4aa0a;
 
 	--transition: all 0.5s;
 }

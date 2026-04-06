@@ -1,0 +1,291 @@
+@use 'lib' as *;
+
+.cases {
+    padding: fluid(75px, 37px) 0;
+}
+
+.cases__heading {
+    text-transform: uppercase;
+    margin-bottom: 96px;
+    @include media("<=md") {
+        margin-bottom: 45px;
+    }
+}
+
+.cases__layout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    grid-auto-flow: dense;
+    @include media("<=xlg") {
+        gap: 20px;
+    }
+    @include media("<=md") {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 1-я большая */
+.cases__item:nth-child(4n + 1) {
+    grid-column: span 2;
+    @include media("<=md") {
+        grid-column: auto;;
+    }
+}
+
+/* 4-я большая */
+.cases__item:nth-child(4n + 4) {
+    grid-column: span 2;
+    @include media("<=md") {
+        grid-column: auto;;
+    }
+}
+
+.cases__item {
+    position: relative;
+    background: rgba(0, 0, 0, 1);
+    border-radius: 30px;
+    padding: 40px 10px 10px 40px;
+    min-height: 400px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    @include media("<=xlg") {
+        padding: 20px 10px 10px 20px;
+    }
+    &-title.text {
+        span.cases__item-arrow {
+            position: absolute;
+            right: -100px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 20px;
+            transition: color 0.3s ease;
+            background: transparent;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: initial;
+            @include media("<=md") {
+                right: -30px;
+                font-size: 14px;
+                width: auto;
+                height: auto;
+            }
+        }
+    }
+}
+
+.cases__item:hover {
+    transform: translateY(-4px);
+}
+
+.cases__item::before {
+    content: url(../img/cases/decor-cases.webp);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    pointer-events: none;
+}
+
+.cases__item-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+.cases__item-content {
+    position: relative;
+    z-index: 2;
+    max-width: 433px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.cases__item-title,
+.cases__item-text {
+    color: var(--white);
+}
+
+.cases__item-title {
+    position: relative;
+    margin-bottom: 10px;
+    &:hover {
+        color: var(--main-green);
+        transition: color 0.3s ease;
+    }
+    &:hover span.cases__item-arrow {
+        color: var(--main-green);
+        transition: color 0.3s ease;
+    }
+    @include media("<=md") {
+        font-size: 16px;
+        max-width: 246px;
+    }
+}
+
+.cases__item-text {
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.75);
+    span {
+        background: var(--main-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    @include media("<=md") {
+        font-size: 14px;
+        max-width: 235px;
+    }
+}
+
+.cases__item-tags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: auto;
+}
+
+.cases__item-tag {
+    height: 40px;
+    font-size: 16px;
+    padding: 10px 40px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.75);
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(2px);
+    z-index: 1;
+    @include media("<=md") {
+        font-size: 12px;
+        padding: 7px 40px;
+        height: 30px;
+    }
+}
+
+.cases__item-pic {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.cases__item-image {
+    display: block;
+    margin: 0;
+}
+
+.cases__item {
+    &.cases__item--stats {
+        padding: 40px;
+        background: var(--main-gradient);
+        @include media("<=xlg") {
+            padding: 20px;
+        }
+        @include media("<=md") {
+            min-height: 270px;
+        }
+        .cases__item-title {
+            margin-bottom: 0;
+            &:hover {
+                color: var(--white);
+            }
+            @include media("<=md") {
+                font-size: 80px;
+                max-width: 100%;
+            }
+        }
+        &::before {
+            content: '';
+        }
+        .cases__item-link-stats {
+            height: 60px;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(2px);
+            padding: 19px 6px 19px 40px;
+            color: rgba(255, 255, 255, 0.75);
+            justify-content: space-between;
+            transition: transform .5s linear;
+            gap: 10px;
+            &:hover::before {
+                opacity: 0;
+            }
+            &:hover .cases__item-link-arrow {
+                animation: leftRightGo 1.5s backwards infinite alternate linear;
+            }
+            @include media("<=md") {
+                font-size: 14px;
+                height: 50px;
+                padding: 18px 2px 18px 40px;
+            }
+        }
+        .cases__item-link-arrow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 90px;
+            height: 48px;
+            border-radius: 50px;
+            background: var(--main-gradient);
+            @include media("<=md") {
+                width: 81px;
+                height: 44px;
+            }
+        }
+        .cases__link-svg-icon {
+            fill: transparent;
+            stroke: var(--white);
+            width: 17px;
+        }
+    }
+}
+
+@keyframes leftRightGo {
+    0% {
+        transform: translateX(0px);
+    }
+    50% {
+        transform: translateX(-10px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+.cases__item {
+    &.cases__item--cta {
+        padding: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+        border: 1px solid var(--main-green);
+        @include media("<=xlg") {
+            padding: 20px;
+        }
+        @include media("<=md") {
+            order: 1;
+            min-height: 270px;
+        }
+        .cases__item-title {
+            color: var(--main-black);
+            text-transform: uppercase;
+            @include media("<=md") {
+                font-size: 36px;
+            }
+        }
+        &::before {
+            content: '';
+        }
+        .cases__item-link-stats {
+            @include media("<=md") {
+                font-size: 14px;
+                height: 50px;
+            }
+        }
+    }
+}

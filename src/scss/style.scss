@@ -19,6 +19,7 @@
 @use "../../node_modules/swiper/modules/navigation";
 @use "../../node_modules/swiper/modules/pagination";
 @use "../../node_modules/@fancyapps/ui/dist/fancybox/fancybox.css";
+@use "../../node_modules/hystmodal/lib/hystmodal.css";
 
 body, html {
 	background-color: var(--background);
@@ -27,7 +28,16 @@ body, html {
 	font-family: var(--font, sans-serif);
 	display: flex;
 	flex-flow: column nowrap;
+    overflow-x: hidden;
     @include media("<=sm") {
         font-size: 14px;
     }
+}
+
+main {
+    padding-top: 160px;
+}
+
+.sprite {
+    display: none;
 }

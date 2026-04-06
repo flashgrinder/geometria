@@ -10,43 +10,212 @@
 </head>
 
 <body id="home">
-
+<header class="header js-mobile-main-menu">
+    <div class="header__body container">
+		<div class="header__inner">
+			<div class="header__logo">
+				<img src="./img/logo.svg" alt="">
+			</div>
+            <div class="header__wrap-menu">
+                <nav class="header__menu menu">
+                    <ul class="header__menu-list menu__list">
+                        <li class="header__menu-item menu__item">
+                            <a href="" class="header__menu-link menu__link">
+                                Услуги
+                            </a>
+                        </li>
+                        <li class="header__menu-item menu__item">
+                            <a href="" class="header__menu-link menu__link">
+                                Кейсы
+                            </a>
+                        </li>
+                        <li class="header__menu-item menu__item">
+                            <a href="" class="header__menu-link menu__link">
+                                Команда
+                            </a>
+                        </li>
+                        <li class="header__menu-item menu__item">
+                            <a href="#" class="header__menu-link menu__link">
+                                Контакты
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <button class="header__button-mobile btn" data-hystmodal="#join">
+                    <span>Рассчитать проект</span>
+                </button>
+                <div class="header__contacts">
+                    <a href="mailto:" class="header__contact">
+                        e-mail@mail.ru
+                    </a>
+                    <a href="tel:+7 (999) 999-99-99" class="header__contact">
+                        +7 (999) 999-99-99
+                    </a>
+                </div>
+                <div class="header__socials">
+                    <a href="" class="social">
+                        <img src="../img/vk.svg" alt="" class="social__icon">
+                    </a>
+                    <a href="" class="social">
+                        <img src="../img/insta.svg" alt="" class="social__icon">
+                    </a>
+                    <a href="" class="social">
+                        <img src="../img/tg.svg" alt="" class="social__icon">
+                    </a>
+                </div>
+            </div>
+			<button class="header__button-desktop btn btn">
+				<span>Рассчитать проект</span>
+			</button>
+            <button class="mobile-nav-btn burger js-mobile-nav-burger">
+                <span class="nav-icon burger__icon"></span>
+            </button>
+		</div>
+	</div>
+</header>
 
 <main class="main">
 	<section class="top">
-	<div class="top__container container">
-		<div class="top__grid">
-			<div class="top__info">
-				<h1 class="top__title title title--100">
-					Бесплатный <span class="title__decor">SEO-аудит сайта</span>
-				</h1>
-				<div class="top__pic">
-					<img src="./img/top-img.webp" alt="" class="top__img">
-				</div>
-				<div class="top__text">
-					Проведём глубокий анализ вашего ресурса и выявим слабые места, которые снижают позиции в поиске Яндекс и Google. Разработаем персональный план для улучшения видимости сайта, увеличения органического трафика и конверсии.
-				</div>
-			</div>
-		</div>
-		<div class="top__form-wrap">
-			<form action="" class="top__form form">
-				<div class="form__inner">
-					<label class="form__label">
-						<input class="form__input" type="text" name="name" placeholder="Ваше имя">
-					</label>
-					<label class="form__label">
-						<input class="form__input" type="tel" name="name" placeholder="+7 (___) ___-__-__">
-					</label>
-					<button class="form__btn btn" type="submit">
-						Оставить заявку
-					</button>
-				</div>
-				<div class="form__agree">
-					Нажимая на кнопку, вы соглашаетесь с условиями обработки персональных данных
-				</div>
-			</form>
-		</div>
-	</div>
+    <div class="top__container container js-parallax-container">
+
+        <div class="formula">
+            <div class="formula__container">
+                <div class="formula__decoration">
+                    <img class="formula__svg" src="../img/formula-decor.webp" alt=""> 
+                </div>
+
+                <div class="formula__content">
+                    <p class="formula__subtitle text js-animation-item top-animation-item" data-intensity="3">Мы строим маркетинг, который работает как точная формула</p>
+                    
+                    <div class="formula__equation js-animation-item top-animation-item" data-intensity="2">
+                        <div class="formula__row-wrap">
+                            <div class="formula__row formula__row--first">
+                                <span class="formula__term title title--100">СТРАТЕГИЯ</span>
+                                <span class="formula__term title title--100">КРЕАТИВ</span>
+                            </div>
+                            <div class="formula__operator formula__operator--multiply">
+                                <span>×</span>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="formula__row formula__row--result js-animation-item top-animation-item" data-intensity="2">
+                            <div class="formula__operator formula__operator--equals">
+                                <span>=</span>
+                            </div>
+                            <div class="formula__wrap-result">
+                                <span class="formula__result title">РОСТ</span>
+                                <button class="formula__btn formula__btn--desktop btn btn--second">
+                                    <span class="btn__text">РАССЧИТАТЬ ПРОЕКТ</span>
+                                </button>
+                            </div>
+                        </div>
+                        <button class="formula__btn formula__btn--mobile btn btn--second">
+                            <span class="btn__text">РАССЧИТАТЬ ПРОЕКТ</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="top__grid">
+            <!-- Card 1 -->
+            <div class="top__card">
+                <img src="../img/top/icon-strategy.svg" class="top__card-icon-placeholder top__card-icon-placeholder--strategy">
+                <h3 class="top__card-title title title--32">СТРАТЕГИЯ</h3>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="top__card">
+                <img src="../img/top/icon-branding.svg" class="top__card-icon-placeholder top__card-icon-placeholder--branding">
+                <h3 class="top__card-title title title--32">БРЕНДИНГ</h3>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="top__card">
+                <img src="../img/top/icon-smm.svg" class="top__card-icon-placeholder top__card-icon-placeholder--smm">
+                <h3 class="top__card-title title title--32">SMM</h3>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="top__card">
+                <img src="../img/top/icon-pr.svg" class="top__card-icon-placeholder top__card-icon-placeholder--pr">
+                <h3 class="top__card-title title title--32">PR</h3>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="top__card">
+                <img src="../img/top/icon-rk.svg" class="top__card-icon-placeholder top__card-icon-placeholder--rk">
+                <h3 class="top__card-title title title--32">ЗАПУСК РК</h3>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="top__card">
+                <img src="../img/top/icon-gr.svg" class="top__card-icon-placeholder top__card-icon-placeholder--gr">
+                <h3 class="top__card-title title title--32">GR</h3>
+            </div>
+
+            <!-- Card 7 -->
+            <div class="top__card top__card--large">
+                <img src="../img/top/icon-events.svg" class="top__card-icon-placeholder top__card-icon-placeholder--events">
+                <h3 class="top__card-title title title--32">ОРГАНИЗАЦИЯ<br>МЕРОПРИЯТИЙ</h3>
+            </div>
+        </div>
+    </div>
+    <div class="top__decoration">
+        <img src="../img/top/top-decoration.webp" alt="">
+    </div>
+</section>
+	<section class="hero">
+    <div class="hero__top container">
+        <h2 class="hero__heading title title--100">Когда маркетинг <br> <span>— это хаос</span></h2>
+    </div>
+    <div class="hearo__outer">
+        <div class="hero__container">
+            <!-- Левая часть - проблемы -->
+            <div class="hero__left hero-side hero-side--dark">
+                <ul class="hero__problems hero-side__list">
+                    <li class="hero__title hero-side__title hero-side__title--blurred title">
+                        ШУМ В КАНАЛАХ
+                    </li>
+                    <li class="hero__problem-item hero-side__item">
+                        <span class="hero__problem-text hero-side__text title title--40">БЮДЖЕТЫ УТЕКАЮТ</span>
+                    </li>
+                    <li class="hero__problem-item hero-side__item">
+                        <span class="hero__problem-text hero-side__text title title--40">НЕТ СИСТЕМЫ</span>
+                    </li>
+                </ul>
+            </div>
+    
+            <!-- Правая часть - решение -->
+            <div class="hero__right hero-side hero-side--light">
+                <h3 class="hero__title hero-side__title title title--60">
+                    МЫ ПРИВОДИМ ВСЁ К
+                    <span class="hero__title-highlight"> ПОРЯДКУ</span>
+                </h3>
+                
+                <div class="hero__formula formula">
+                    <div class="hero__formula-row formula__row--top">
+                        <div class="hero__formula-item hero__formula-item--left">
+                            <span class="hero__formula-text title">ЧЁТКАЯ<br>СТРАТЕГИЯ</span>
+                        </div>
+                        <div class="hero__formula-operator hero__formula-operator--plus">
+                            <span class="hero__formula-symbol">×</span>
+                        </div>
+                        <div class="hero__formula-item hero__formula-item--right">
+                            <span class="hero__formula-text title">СИЛЬНЫЙ<br>КРЕАТИВ</span>
+                        </div>
+                    </div>
+                    <div class="hero__formula-equals">
+                        <span class="hero__formula-equals-sign">=</span>
+                    </div>
+                    <div class="hero__formula-result">
+                        <span class="hero__formula-result-text title">ПОНЯТНЫЕ РЕЗУЛЬТАТЫ</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 	<section class="services">
     <div class="services__top container">
@@ -126,187 +295,350 @@
         </div>
     </div>
 </section>
-	<section class="benefits">
-	<div class="benefits__container container">
-		<h3 class="benefits__title title title--48 title--decor">
-			<span class="title__decor">Чем полезен</span> SEO-аудит?
-		</h3>
-		<div class="benefits__items">
-			<article class="benefits__item">
-				<div class="benefits__item-icon">
-					<img src="./img/benefits-icon.webp" alt="" class="benefits__item-icon-img">
-				</div>
-				<div class="benefits__item-info">
-					<h4 class="benefits__item-title title">
-						Покажем ошибки, которые «тормозят» продвижение
-					</h4>
-					<p class="benefits__item-text">
-						Технические проблемы (битые ссылки, дубли страниц, медленная загрузка), неоптимизированный контент или кривые метатеги снижают позиции в поиске. Аудит выявляет слабые места точечно.
-					</p>
-				</div>
-			</article>
-			<article class="benefits__item">
-				<div class="benefits__item-icon">
-					<img src="./img/benefits-icon.webp" alt="" class="benefits__item-icon-img">
-				</div>
-				<div class="benefits__item-info">
-					<h4 class="benefits__item-title title">
-						Узнаете степень соответствия сайта требованиям поисковых систем
-					</h4>
-					<p class="benefits__item-text">
-						Алгоритмы Google и Яндекса постоянно меняются. Аудит покажет, какие элементы сайта устарели и как их адаптировать под новые правила.
-					</p>
-				</div>
-			</article>
-			<article class="benefits__item">
-				<div class="benefits__item-icon">
-					<img src="./img/benefits-icon.webp" alt="" class="benefits__item-icon-img">
-				</div>
-				<div class="benefits__item-info">
-					<h4 class="benefits__item-title title">
-						Сможете оптимизировать бюджет на продвижение
-					</h4>
-					<p class="benefits__item-text">
-						Вместо распыления средств на гипотезы вы получите чёткий план работ: что исправить в первую очередь, чтобы получить максимальный эффект при минимальных затратах.
-					</p>
-				</div>
-			</article>
-			<article class="benefits__item">
-				<div class="benefits__item-icon">
-					<img src="./img/benefits-icon.webp" alt="" class="benefits__item-icon-img">
-				</div>
-				<div class="benefits__item-info">
-					<h4 class="benefits__item-title title">
-						Увеличите конверсию сайта
-					</h4>
-					<p class="benefits__item-text">
-						Аудит покажет слабы места в юзабиолити сайта. Расскажем не только о том, как увеличить органический трафик, но и как конвертировать его в клиентов с наибольшей эффективностью.
-					</p>
-				</div>
-			</article>
-		</div>
-	</div>
+	<section class="cases cases--home">
+    <div class="cases__container container">
+        <h2 class="cases__heading title title--100">
+            Наши <br> <span>кейсы</span>
+        </h2>
+        <div class="cases__layout">
+            <!-- Top Left - Large Case -->
+            <div class="cases__item cases__item--main">
+                <div class="cases__item-wrap">
+                    <div class="cases__item-content">
+                        <a href="" class="cases__item-title text text--24 text--light">
+                            Рейтинг 5,0 в Яндексе: отзывы стали работать на клинику
+                            <span class="cases__item-arrow">→</span>
+                        </a>
+                        <p class="cases__item-text text text--light">Подняли <span>рейтинг клиники в Яндексе до 5,0</span> и настроили процесс, который снижает риск негативных отзывов</p>
+                    </div>
+                    <div class="cases__item-tags">
+                        <a href="" class="cases__item-tag btn"><span>МЕДИЦИНСКАЯ КЛИНИКА</span></a>
+                        <a href="" class="cases__item-tag btn"><span>РЕКЛАМНАЯ КОМПАНИЯ</span></a>
+                        <a href="" class="cases__item-tag btn"><span>SMM</span></a>
+                    </div>
+                </div>
+                <div class="cases__item-pic">
+                    <img class="cases__item-image" src="../img/cases/cases-img-1.webp" alt="">
+                </div>
+            </div>
+
+            <!-- Top Right - Stats -->
+            <div class="cases__item cases__item--stats">
+                <div class="cases__item-wrap">
+                    <div class="cases__item-content">
+                        <h3 class="cases__item-title title title--100">
+                            &gt;30
+                        </h3>
+                        <p class="cases__item-text text text--light">
+                            успешных кейсов, которые принесли клиентам результат
+                        </p>
+                    </div>
+                    <a href="#" class="cases__item-link-stats btn">
+                        <span class="cases__item-link-text">БОЛЬШЕ КЕЙСОВ</span>
+                        <span class="cases__item-link-arrow">
+                            <svg class="cases__link-svg-icon">
+                                <use xlink:href="#arrow-right"></use>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Bottom Left - CTA -->
+            <div class="cases__item cases__item--cta">
+                <div class="cases__item-wrap">
+                    <div class="cases__item-content">
+                        <h3 class="cases__item-title title title--60">
+                            Хотите <br> также?
+                        </h3>
+                    </div>
+                    <a href="#" class="cases__item-link-stats btn btn--second">
+                        <span class="cases__item-link-text">Рассчитать проект</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Bottom Right - Article Case -->
+            <div class="cases__item cases__item--main">
+                <div class="cases__item-wrap">
+                    <div class="cases__item-content">
+                        <a href="" class="cases__item-title text text--24 text--light">
+                            Одна статья — охват около миллиона
+                            <span class="cases__item-arrow">→</span>
+                        </a>
+                        <p class="cases__item-text text text--light">
+                            Написали экспертный материал, который дал <span>охват около 1 000 000</span> и привёл внимание к компании без прямой рекламы
+                        </p>
+                    </div>
+                    <div class="cases__item-tags">
+                        <a href="" class="cases__item-tag btn"><span>SMM</span></a>
+                        <a href="" class="cases__item-tag btn"><span>Бухгалтерские и юр. услуги</span></a>
+                        <a href="" class="cases__item-tag btn"><span>PR</span></a>
+                    </div>
+                </div>
+                <div class="cases__item-pic">
+                    <img class="cases__item-image" src="../img/cases/cases-img-1.webp" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
-	<section class="passes">
-	<div class="passes__container container">
-		<h3 class="passes__title title title--48">
-			<span class="title__decor">Как проходит</span> SEO-аудит?
-		</h3>
-		<div class="passes__slider-wrap">
-			<div class="passes__swiper swiper js-passes-slider">
-				<div class="passes__swiper-wrapper swiper-wrapper">
-					<div class="passes__swiper-slide swiper-slide">
-						<div class="passes__card">
-							<div class="passes__card-info">
-								<div class="passes__card-step">
-									шаг 1
-								</div>
-								<h4 class="passes__card-title title">
-									Анализ ниши и текущих позиций сайта
-								</h4>
-								<div class="passes__card-text">
-									Изучаем семантическое ядро, определяем ключевые запросы, по которым продвигается сайт, и анализируем текущие позиции в выдаче Яндекса и Google.
-								</div>
-							</div>
-							<div class="passes__card-pic">
-								<img src="./img/passes/passes-card-1.webp" alt="" class="passes__card-image" data-fancybox>
-							</div>
-						</div>
+	<section class="team">
+    <div class="team__container container">
+        <h2 class="team__heading title title--100">
+            Наша <br />
+            <span>команда</span>
+        </h2>
+        <div class="team__grid" id="teamGrid">
+            <!-- 1. Большая карточка (обязательно первый элемент) -->
+            <article class="team-card team-card--large">
+                <img src="../img/team/ppl-1.webp" class="team-card__image">
+                <div class="team-card__content">
+                    <div class="team-card__badge title">Директор OOO "Геометрия смыслов"</div>
+                    <div class="team-card__text-line title title--32">Юлия Агальцова</div>
+                    <div class="team-card__text-line text text--light">
+                        Маркетолог, стаж 17 лет в маркетинге, работа СМО в крупных российских и международных компаниях
+                    </div>
+                </div>
+            </article>
+    
+            <!-- 2. Обычная карточка -->
+            <article class="team-card">
+                <img src="../img/team/ppl-2.webp" class="team-card__image">
+                <div class="team-card__content">
+                    <div class="team-card__text-line title title--32">Наталья Тен</div>
+                    <div class="team-card__text-line text text--light">
+                        Заместитель директора по связям с общественностью, режиссер, рилсмейкер
+                    </div>
+                </div>
+            </article>
+            
+            <!-- 3. Обычная карточка -->
+            <article class="team-card">
+                <img src="../img/team/ppl-4.webp" class="team-card__image">
+                <div class="team-card__content">
+                    <div class="team-card__text-line title title--32">Ольга Деушева</div>
+                    <div class="team-card__text-line text text--light">
+                        Заместитель директора по контент-маркетингу, выпускающий редактор
+                    </div>
+                </div>
+            </article>
+    
+            <!-- 4. Обычная карточка -->
+            <article class="team-card">
+                <img src="../img/team/ppl-3.webp" class="team-card__image">
+                <div class="team-card__content">
+                    <div class="team-card__text-line title title--32">Елизавета Сычева</div>
+                    <div class="team-card__text-line text text--light">
+                        Руководитель образовательтных программ и проектов
+                    </div>
+                </div>
+            </article>
+    
+            <!-- 5. Обычная карточка -->
+             <article class="team-card">
+                <img src="../img/team/ppl-6.webp" class="team-card__image">
+                <div class="team-card__content">
+                    <div class="team-card__text-line title title--32">Андрей Ковалев</div>
+                    <div class="team-card__text-line text text--light">
+                        Графический дизайнер
+                    </div>
+                </div>
+            </article>
+            
+            <!-- 6. Обычная карточка -->
+            <article class="team-card">
+                <img src="../img/team/ppl-5.webp" class="team-card__image">
+                <div class="team-card__content">
+                    <div class="team-card__text-line title title--32">Ксения Климакова</div>
+                    <div class="team-card__text-line text text--light">
+                        СММ-специалист
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+	
+	<section class="form-section">
+    <div class="form-section__container container">
+        <div class="form-section__top">
+            <h3 class="form-section__heading title title--100">
+                Начнём строить <br> <span>вашу геометрию?</span>
+            </h3>
+            <p class="form-section__subtitle text text--light">
+                Заполните заявку и мы ответим вам в ближайшее время!
+            </p>
+        </div>
+        <div class="form-section__wrapper">
+            <form action="./upload/" class="form-section__form form form--modal js-form-1"
+				  enctype="multipart/form-data"
+				  method="post">
+				<label class="form__field">
+					<input class="form__input js-input" type="text" name="name" placeholder="Имя">
+                    <span class="wpcf7-not-valid-tip" aria-hidden="true">Важно заполнить это поле.</span>
+				</label>
+				<label class="form__field">
+                    <input class="form__input js-input" type="text" name="email" placeholder="Компания">
+                    <span class="wpcf7-not-valid-tip" aria-hidden="true">Важно заполнить это поле.</span>
+				</label>
+                <label class="form__field">
+                    <input class="form__input js-input" type="tel" name="phone" placeholder="+7 (999) 999-99-99">
+                </label>
+				<label class="form__field form__field--textarea">
+					<textarea name="message" class="form__input form__input--textarea" placeholder="Задача"></textarea>
+				</label>
+				<div class="form__actions">
+					<div class="form__accept">
+						<input class="form__checkbox" type="checkbox" id="form-agreement"
+							   name="agreement"
+							   checked>
+						<label for="form-agreement"
+							   class="form__accept-label">
+								<span class="form-section__accept-text form__accept-text">
+									Даю своё <a href="">согласие на обработку персональных данных</a>
+								</span>
+						</label>
 					</div>
-					<div class="passes__swiper-slide swiper-slide">
-						<div class="passes__card">
-							<div class="passes__card-info">
-								<div class="passes__card-step">
-									шаг 2
-								</div>
-								<h4 class="passes__card-title title">
-									Сравнительный анализ видимости с конкурентами
-								</h4>
-								<div class="passes__card-text">
-									Сравниваем результаты по видимости сайта и органическому трафику с основными конкурентами. Выявляем, какие факторы дают конкурентам преимущество в поисковой выдаче.
-								</div>
-							</div>
-							<div class="passes__card-pic">
-								<img src="./img/passes/passes-card-2.webp" alt="" class="passes__card-image" data-fancybox>
-							</div>
-						</div>
+                    <div class="form__accept">
+						<input class="form__checkbox" type="checkbox" id="form-policy"
+							   name="policy"
+							   checked>
+						<label for="form-policy"
+							   class="form__accept-label">
+								<span class="form-section__accept-text form__accept-text">
+									Ознакомлен с <a href="">Политикой конфиденциальности</a> и <a href=""></a>Пользовательским соглашением</a>
+								</span>
+						</label>
 					</div>
-					<div class="passes__swiper-slide swiper-slide">
-						<div class="passes__card">
-							<div class="passes__card-info">
-								<div class="passes__card-step">
-									шаг 3
-								</div>
-								<h4 class="passes__card-title title">
-									Глубокий технический аудит
-								</h4>
-								<div class="passes__card-text">
-									Проверяем robots.txt, индексацию, скорость загрузки, адаптивность и безопасность сайта. Анализируем метатеги, микроразметку и внутреннюю перелинковку — всё, что влияет на понимание сайта поисковыми роботами. Особое внимание коммерческим факторам, влияющим не только на ранжирование, но и на конверсию.
-								</div>
-							</div>
-							<div class="passes__card-pic">
-								<img src="./img/passes/passes-card-3.webp" alt="" class="passes__card-image" data-fancybox>
-							</div>
-						</div>
-					</div>
-					<div class="passes__swiper-slide swiper-slide">
-						<div class="passes__card">
-							<div class="passes__card-info">
-								<div class="passes__card-step">
-									шаг 4
-								</div>
-								<h4 class="passes__card-title title">
-									Разработка стратегии и дорожной карты
-								</h4>
-								<div class="passes__card-text">
-									Составляем пошаговый план работ с приоритетами: сначала критичные ошибки, затем — оптимизация контента, новые страницы и наращивание ссылочной массы. Определяем сроки и ресурсы, необходимые для реализации.
-								</div>
-							</div>
-							<div class="passes__card-pic">
-								<img src="./img/passes/passes-card-4.webp" alt="" class="passes__card-image" data-fancybox>
-							</div>
-						</div>
-					</div>
-					<div class="passes__swiper-slide swiper-slide">
-						<div class="passes__card">
-							<div class="passes__card-info">
-								<div class="passes__card-step">
-									шаг 5
-								</div>
-								<h4 class="passes__card-title title">
-									Прогноз результатов после внедрения изменений
-								</h4>
-								<div class="passes__card-text">
-									Даём оценку потенциального роста трафика на основе исправления ошибок и доработок. Показываем, к каким результатам можно прийти через полгода работы и что для этого нужно.
-								</div>
-							</div>
-							<div class="passes__card-pic">
-								<img src="./img/passes/passes-card-5.webp" alt="" class="passes__card-image" data-fancybox>
-							</div>
-						</div>
-					</div>
+					<button type="button" class="form__btn btn btn--second"
+							data-hystmodal="#thanks">
+						<span>Отправить на расчёт</span>
+					</button>
+				</div>
+			</form>
+        </div>
+    </div>
+</section>
+
+<!-- Модалка успешной отправки -->
+<div class="modal modal--thanks hystmodal js-modal-success" id="thanks" aria-hidden="true">
+    <div class="modal__wrap hystmodal__wrap">
+        <div class="modal__body hystmodal__window" role="dialog" aria-modal="true">
+            <button data-hystclose class="modal__close hystmodal__close">Close</button>
+            <div class="modal__header">
+				<div class="modal__title">
+					<div class="modal__word-wrap">
+                        <div class="modal__word title title--100">
+                            Спасибо
+                        </div> 
+                        <div class="modal__subtext text">
+                            Вы только что сделали шаг к росту бизнеса!
+                        </div>
+                    </div>
+                    <div class="modal__word modal__word--second title title--100">
+                        <span>Заявка отправлена</span>
+                    </div>
+				</div>
+				<div class="modal__subtitle modal__subtitle--first title title--32">
+					Мы внимательно изучим вашу заявку и ответим в ближайшее время
+				</div>
+				<div class="modal__subtitle modal__subtitle--second title title--32">
+					А пока вы ждете ответа, посмотрите наши кейсы
 				</div>
 			</div>
-			<div class="passes__swiper-pagination swiper-pagination"></div>
-			<div class="passes__slider-navigation">
-				<div class="passes__swiper-button passes__swiper-button-prev swiper-button-prev">
-					<svg>
-						<use xlink:href="#arrow-slider"></use>
-					</svg>
-				</div>
-				<div class="passes__swiper-button passes__swiper-button-next swiper-button-next">
-					<svg>
-						<use xlink:href="#arrow-slider"></use>
-					</svg>
-				</div>
-			</div>
+			<a href="" class="modal__thanks-btn btn btn--second">
+				<span>Смотреть наши кейсы</span>
+			</a>
 		</div>
 	</div>
-</section>
+</div>
 </main>
 
 
-<svg class="sprite" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><symbol viewBox="0 0 27 27" id="arrow-slider" xmlns="http://www.w3.org/2000/svg"><path d="M21.375 13.5H5.625m0 0L13.5 5.625M5.625 13.5l7.875 7.875" stroke-linecap="round" stroke-linejoin="round"/></symbol></svg>
+<svg class="sprite" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><symbol viewBox="0 0 20 18" id="arrow-right" xmlns="http://www.w3.org/2000/svg"><path d="m14.008 4.36 4.42 4.42-4.42 4.42M.75 8.78h17.56" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol viewBox="0 0 27 27" id="arrow-slider" xmlns="http://www.w3.org/2000/svg"><path d="M21.375 13.5H5.625m0 0L13.5 5.625M5.625 13.5l7.875 7.875" stroke-linecap="round" stroke-linejoin="round"/></symbol></svg>
+
+<footer class="footer">
+    <div class="footer__body container">
+        <div class="footer__wrap">
+            <a href="/" class="footer__logo">
+                <img src="../img/logo.svg" alt="" class="footer__logo-img logo">
+            </a>
+            <nav class="footer__menu menu">
+                <ul class="footer__menu-list menu__list">
+                    <li class="footer__menu-item menu__item">
+                        <a href="" class="footer__menu-link menu__link">
+                            Услуги
+                        </a>
+                    </li>
+                    <li class="footer__menu-item menu__item">
+                        <a href="" class="footer__menu-link menu__link">
+                            Кейсы
+                        </a>
+                    </li>
+                    <li class="footer__menu-item menu__item">
+                        <a href="" class="footer__menu-link menu__link">
+                            Команда
+                        </a>
+                    </li>
+                    <li class="footer__menu-item menu__item">
+                        <a href="" class="footer__menu-link menu__link">
+                            Контакты
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="footer__actions">
+                <a href="" class="footer__btn btn">
+                    <span>Рассчитать проект</span>
+                </a> 
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <div class="footer__col footer__col--first">
+                <div class="footer__req text text--light">
+                    Реквизиты
+                </div>
+                <div class="footer__copyright text text--light">
+                    Геометрия Смыслов ©2026
+                </div>
+            </div>
+            <div class="footer__col footer__col--center">
+                <a href="" class="footer__policy text text--light">
+                    Политика конфиденциальности
+                </a>
+                <a href="" class="footer__policy text text--light">
+                    Политика обработки персональных данных
+                </a>
+            </div>
+            <div class="footer__col footer__col--last">
+                <div class="footer__info">
+                    <div class="footer__socials">
+                        <a href="" class="social">
+                            <img src="../img/vk.svg" alt="" class="social__icon">
+                        </a>
+                        <a href="" class="social">
+                            <img src="../img/insta.svg" alt="" class="social__icon">
+                        </a>
+                        <a href="" class="social">
+                            <img src="../img/tg.svg" alt="" class="social__icon">
+                        </a>
+                    </div>
+                    <div class="footer__contacts">
+                        <a href="mailto:" class="footer__contact">
+                            e-mail@mail.ru
+                        </a>
+                        <a href="tel:+7 (999) 999-99-99" class="footer__contact">
+                            +7 (999) 999-99-99
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
 <script src="common.js?v=0"></script>
 </body>
 </html>

@@ -1,0 +1,186 @@
+@use 'lib' as *;
+
+.hero {
+    padding: fluid(75px, 37px) 0;
+}
+
+.hero__heading {
+    text-transform: uppercase;
+    margin-bottom: 100px;
+    @include media("<=md") {
+        margin-bottom: 45px;
+    }
+}
+
+.hero__outer {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.hero__container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+    @include media("<=xxlg") {
+        flex-direction: column;
+    }
+}
+
+.hero-side {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 146px 86px;
+    transition: all 0.3s ease;
+    @include media("<=xxlg") {
+        padding: 50px 30px;
+    }
+    @include media("<=md") {
+        padding: 50px 15px;
+    }
+}
+
+.hero-side--dark {
+    background-image: url(../img/hero/bg-hero-1.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color: var(--main-black);
+    color: #ffffff;
+}
+
+.hero-side--light {
+    background-image: url(../img/hero/bg-hero-2.webp);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+    padding: 146px 70px;
+    border: 1px solid var(--main-green);
+    @include media("<=xxlg") {
+        padding: 50px 30px;
+    }
+    @include media("<=md") {
+        padding: 50px 15px;
+    }
+}
+
+.hero__right.hero-side .hero-side__title {
+    margin-bottom: 100px;
+    @include media("<=md") {
+        margin-bottom: 50px;
+    }
+}
+
+.hero__title {
+    font-size: fluid(50px, 30px);
+    text-transform: uppercase;
+}
+
+.hero-side__title--blurred {
+    filter: blur(2px);
+    color: var(--white);
+    text-shadow: 4px 4px 2px rgba(161, 177, 106, 0.8);
+    animation: heroBlurReveal 1.5s ease backwards infinite;
+}
+
+.hero__problems {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 175px;
+    @include media("<=xxlg") {
+        gap: 80px;
+    }
+    @include media("<=md") {
+        gap: 40px;
+    }
+}
+
+.hero__problem-text {
+    color: var(--white);
+    text-transform: uppercase;
+}
+
+.hero__formula-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 47px;
+    margin-bottom: 60px;
+    @include media("<=md") {
+        gap: 14px;
+        margin-bottom: 30px;
+    }
+}
+
+.hero__formula-item {
+    flex: 1;
+    text-align: center;
+}
+
+.hero__formula-text {
+    font-size: fluid(36px, 22px);
+    text-transform: uppercase;
+}
+
+.hero__formula-operator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 125px;
+    height: 50px;
+    border: 1px solid var(--main-green);
+    border-radius: 50px;
+    flex-shrink: 0;
+    @include media("<=md") {
+        width: 30px;
+        height: 20px;
+    }
+}
+
+.hero__formula-symbol {
+    color: var(--main-green);
+}
+
+.hero__formula-symbol,
+.hero__formula-equals {
+    font-family: var(--font-title);
+    font-size: 30px;
+    @include media("<=md") {
+        font-size: 10px;
+    }
+    
+}
+
+.hero__formula-equals {
+    width: 100%;
+    height: 50px;
+    background: var(--main-gradient);
+    color: var(--white);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 30px;
+    @include media("<=md") {
+        height: 20px;
+        margin-bottom: 15px;
+    }
+}
+
+.hero__formula-result {
+    text-align: center;
+}
+
+.hero__formula-result-text {
+    font-size: fluid(50px, 22px);
+    text-transform: uppercase;
+}

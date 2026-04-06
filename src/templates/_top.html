@@ -1,35 +1,91 @@
 <section class="top">
-	<div class="top__container container">
-		<div class="top__grid">
-			<div class="top__info">
-				<h1 class="top__title title title--100">
-					Бесплатный <span class="title__decor">SEO-аудит сайта</span>
-				</h1>
-				<div class="top__pic">
-					<img src="./img/top-img.webp" alt="" class="top__img">
-				</div>
-				<div class="top__text">
-					Проведём глубокий анализ вашего ресурса и выявим слабые места, которые снижают позиции в поиске Яндекс и Google. Разработаем персональный план для улучшения видимости сайта, увеличения органического трафика и конверсии.
-				</div>
-			</div>
-		</div>
-		<div class="top__form-wrap">
-			<form action="" class="top__form form">
-				<div class="form__inner">
-					<label class="form__label">
-						<input class="form__input" type="text" name="name" placeholder="Ваше имя">
-					</label>
-					<label class="form__label">
-						<input class="form__input" type="tel" name="name" placeholder="+7 (___) ___-__-__">
-					</label>
-					<button class="form__btn btn" type="submit">
-						Оставить заявку
-					</button>
-				</div>
-				<div class="form__agree">
-					Нажимая на кнопку, вы соглашаетесь с условиями обработки персональных данных
-				</div>
-			</form>
-		</div>
-	</div>
+    <div class="top__container container js-parallax-container">
+
+        <div class="formula">
+            <div class="formula__container">
+                <div class="formula__decoration">
+                    <img class="formula__svg" src="../img/formula-decor.webp" alt=""> 
+                </div>
+
+                <div class="formula__content">
+                    <p class="formula__subtitle text js-animation-item top-animation-item" data-intensity="3">Мы строим маркетинг, который работает как точная формула</p>
+                    
+                    <div class="formula__equation js-animation-item top-animation-item" data-intensity="2">
+                        <div class="formula__row-wrap">
+                            <div class="formula__row formula__row--first">
+                                <span class="formula__term title title--100">СТРАТЕГИЯ</span>
+                                <span class="formula__term title title--100">КРЕАТИВ</span>
+                            </div>
+                            <div class="formula__operator formula__operator--multiply">
+                                <span>×</span>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="formula__row formula__row--result js-animation-item top-animation-item" data-intensity="2">
+                            <div class="formula__operator formula__operator--equals">
+                                <span>=</span>
+                            </div>
+                            <div class="formula__wrap-result">
+                                <span class="formula__result title">РОСТ</span>
+                                <button class="formula__btn formula__btn--desktop btn btn--second">
+                                    <span class="btn__text">РАССЧИТАТЬ ПРОЕКТ</span>
+                                </button>
+                            </div>
+                        </div>
+                        <button class="formula__btn formula__btn--mobile btn btn--second">
+                            <span class="btn__text">РАССЧИТАТЬ ПРОЕКТ</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="top__grid">
+            <!-- Card 1 -->
+            <div class="top__card">
+                <img src="../img/top/icon-strategy.svg" class="top__card-icon-placeholder top__card-icon-placeholder--strategy">
+                <h3 class="top__card-title title title--32">СТРАТЕГИЯ</h3>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="top__card">
+                <img src="../img/top/icon-branding.svg" class="top__card-icon-placeholder top__card-icon-placeholder--branding">
+                <h3 class="top__card-title title title--32">БРЕНДИНГ</h3>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="top__card">
+                <img src="../img/top/icon-smm.svg" class="top__card-icon-placeholder top__card-icon-placeholder--smm">
+                <h3 class="top__card-title title title--32">SMM</h3>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="top__card">
+                <img src="../img/top/icon-pr.svg" class="top__card-icon-placeholder top__card-icon-placeholder--pr">
+                <h3 class="top__card-title title title--32">PR</h3>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="top__card">
+                <img src="../img/top/icon-rk.svg" class="top__card-icon-placeholder top__card-icon-placeholder--rk">
+                <h3 class="top__card-title title title--32">ЗАПУСК РК</h3>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="top__card">
+                <img src="../img/top/icon-gr.svg" class="top__card-icon-placeholder top__card-icon-placeholder--gr">
+                <h3 class="top__card-title title title--32">GR</h3>
+            </div>
+
+            <!-- Card 7 -->
+            <div class="top__card top__card--large">
+                <img src="../img/top/icon-events.svg" class="top__card-icon-placeholder top__card-icon-placeholder--events">
+                <h3 class="top__card-title title title--32">ОРГАНИЗАЦИЯ<br>МЕРОПРИЯТИЙ</h3>
+            </div>
+        </div>
+    </div>
+    <div class="top__decoration">
+        <img src="../img/top/top-decoration.webp" alt="">
+    </div>
 </section>

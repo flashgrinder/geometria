@@ -53,30 +53,66 @@ img {
 
 
 .btn {
-    padding: 21px 80px;
-    background: var(--yellow);
-    border-radius: 4px;
-
+    position: relative;
+    padding: 14px 79px;
+    background: transparent;
+    border-radius: 50px;
+    
+    font-family: var(--font-title);
     white-space: nowrap;
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--dark);
-    transition: var(--transition);
-
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--main-green);
+    text-transform: uppercase;
+    transition: color .3s ease;
+    border: 1px solid var(--main-green);
+    
     display: flex;
     align-items: center;
     justify-content: center;
-
+    overflow: hidden;
+    
     cursor: pointer;
+
+    span {
+        position: relative;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: var(--main-gradient);
+        opacity: 0;
+        transition: opacity .3s ease;
+    }
+
+    &:hover::before {
+        opacity: 1;
+    }
 
     &:hover {
         color: var(--white);
-        background: var(--dark);
     }
-
 
     &:disabled {
         background: rgba(154, 154, 163, 1);
         cursor: not-allowed;
+    }
+}
+
+.btn--second {
+    color: var(--white);
+    &::before {
+        opacity: 1;
+    }
+    &:hover::before {
+        opacity: 0;
+    }    
+    &:hover {
+        color: var(--main-green);
     }
 }

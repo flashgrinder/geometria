@@ -1,0 +1,88 @@
+@use 'lib' as *;
+
+/* Nav Icon */
+.burger {
+	--time: .150s;
+
+	--width: 30px;
+	--height: 24px;
+
+	--line-height: 2px;
+	--spacing: 6px;
+
+	--color: rgba(0, 0, 0, 0.75);
+	--radius: 0;
+
+	/* Fixed height and width */
+	/* height: var(--height); */
+	/* width: var(--width); */
+
+	/* Dynamic height and width */
+	height: calc(var(--line-height) * 3 + var(--spacing) * 2);
+	width: var(--width);
+
+	display: none;
+	justify-content: center;
+	align-items: center;
+	z-index: 101;
+	@include media("<=lg") {
+        display: flex;
+    }
+}
+
+.burger__icon {
+	position: relative;
+	width: var(--width);
+	height: var(--line-height);
+	background-color: var(--color);
+	border-radius: var(--radius);
+}
+
+.burger__icon::before,
+.burger__icon::after {
+	content: '';
+	display: block;
+
+	position: absolute;
+	left: 0;
+
+	width: var(--width);
+	height: var(--line-height);
+
+	border-radius: var(--radius);
+	background-color: var(--color);
+	transition: transform var(--time) ease-in,
+		top var(--time) linear var(--time);
+}
+
+.burger__icon::before {
+	/* top: calc(var(--line-height) * -2); */
+	top: calc(-1 * (var(--line-height) + var(--spacing)));
+}
+
+.burger__icon::after {
+	/* top: calc(var(--line-height) * 2); */
+	top: calc(var(--line-height) + var(--spacing));
+}
+
+.burger.is-active .burger__icon {
+	background-color: transparent;
+}
+
+.burger.is-active .burger__icon::before,
+.burger.is-active .burger__icon::after {
+	top: 0;
+	transition: top var(--time) linear,
+		transform var(--time) ease-in var(--time);
+	// @include tablet {
+	// 	background-color: var(--dark-bg);
+	// }
+}
+
+.burger.is-active .burger__icon::before {
+	transform: rotate(45deg);
+}
+
+.burger.is-active .burger__icon::after {
+	transform: rotate(-45deg);
+}

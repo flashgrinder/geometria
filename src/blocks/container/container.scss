@@ -5,7 +5,15 @@
 	margin-left: 3rem;
 	margin-right: 3rem;
 	box-sizing: border-box;
-	width: min(var(--container), calc(100% - 12px * 2));
+	// width: min(var(--container), calc(100% - 12px * 2));
+    @include media("<=xxlg") {
+        margin-left: 1.5rem;
+	    margin-right: 1.5rem;
+    }
+    @include media("<=lg") {
+        margin-left: 15px;
+	    margin-right: 15px;
+    }
 	
 	&_abs {
 		position: absolute;

@@ -1,0 +1,154 @@
+@use 'lib' as *;
+
+.team {
+    padding: fluid(75px, 37px) 0;
+    background: url(../img/team/bg-team.webp) no-repeat center bottom;
+    background-size: cover;
+}
+
+.team__heading {
+    text-transform: uppercase;
+    margin-bottom: 136px;
+    @include media("<=md") {
+        margin-bottom: 45px;
+    }
+}
+
+/* Сетка */
+.team__grid {
+    display: flex;
+    gap: 40px;
+    justify-content: flex-end;
+    align-items: flex-start; 
+    margin-left: auto;
+    margin-top: 40px;
+    @include media("<=md") {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+.team__column {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    flex: 1;
+    max-width: 570px;
+    @include media("<=md") {
+        max-width: 100%;
+        width: 100%;
+        display: contents;
+    }
+}
+
+.team__column:nth-of-type(2) {
+    margin-top: -100px;
+    @include media("<=md") {
+        margin-top: 0;
+    }
+}
+
+/* Карточка */
+.team-card {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 30px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--main-green);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Высота карточек */
+.team-card {
+    height: 540px;
+    @include media("<=md") {
+        height: 340px;
+    }
+}
+
+.team-card--large {
+    height: 840px;
+    @include media("<=md") {
+        height: 515px;
+    }
+}
+
+/* Заглушка фото */
+.team-card__image {
+    flex-grow: 1;
+    background-color: #dcdcdc;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.team-card--large .team-card__content {
+    padding: 30px 30px 20px;
+    @include media("<=md") {
+        padding: 15px;
+    }
+}
+
+/* Плашка с текстом */
+.team-card__content {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    right: 20px;
+    width: 100%;
+    max-width: 507px;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.4);
+    padding: 20px 30px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    backdrop-filter: blur(5px);
+    @include media("<=md") {
+        padding: 15px;
+        right: 15px;
+        left: 15px;
+        bottom: 15px;
+        transform: translateX(0);
+        width: auto;
+    }
+}
+
+/* Заглушки текста */
+.team-card__badge {
+    position: absolute;
+    top: -27px;
+    right: 40px;
+    padding: 10px;
+    max-width: 490px;
+    width: 100%;
+    text-align: center;
+    background: var(--main-gradient);
+    border-radius: 50px;
+    margin-bottom: 5px;
+    color: var(--white);
+    font-size: 16px;
+    text-transform: uppercase;
+    @include media("<=md") {
+        font-size: 10px;
+        max-width: 308px;
+    }
+    
+}
+
+.team-card__text-line {
+    width: 100%;
+    border-radius: 4px;
+    &.title {
+        text-transform: uppercase;
+        @include media("<=md") {
+            font-size: 22px;
+        }
+    }
+    @include media("<=md") {
+        font-size: 16px;
+    }
+}

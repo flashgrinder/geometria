@@ -1,0 +1,36 @@
+@use 'lib' as *;
+
+.form-section {
+	$self: &;
+
+    padding: fluid(150px, 50px) 0 fluid(200px, 50px);
+    background-image: url(../img/form/form-bg.webp);
+    background-color: var(--main-black);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    &__top {
+        margin-bottom: 136px;
+        @include media("<=md") {
+            margin-bottom: 45px;
+        }
+    }
+    &__heading {
+        color: var(--white);
+        text-transform: uppercase;
+        margin-bottom: 20px;
+    }
+    &__subtitle {
+        color: rgba(255, 255, 255, 0.75);
+    }
+    &__wrapper {
+		display: flex;
+        justify-content: flex-end;
+        width: 100%;
+	}
+    &__form {
+        width: 100%;
+        max-width: 846px;
+    }
+}

@@ -1,0 +1,137 @@
+@use 'lib' as *;
+
+.header {
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    padding: 50px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    background-color: var(--background);
+    transition: padding .3s ease-in-out;
+	$self: &;
+
+    @include media("<=lg") {
+        padding: 15px 0;
+    }
+
+    &.is-fixed {
+        padding: 10px 0;
+    }
+
+    &.is-fixed &__menu {
+        font-size: 16px;
+    }
+
+    &.is-fixed &__button-desktop {
+        font-size: 16px;
+        padding: 14px 40px;
+    }
+
+    &.is-fixed &__logo {
+        max-width: 150px;
+        @include media("<=lg") {
+            max-width: 101px;
+        }
+    }
+    
+    &__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 40px;
+    }
+
+    &__logo {
+        max-width: 177px;
+        transition: max-width .3s ease-in-out;
+        @include media("<=lg") {
+            max-width: 101px;
+        }
+    }
+
+    &__button-desktop {
+        transition: font-size .3s ease-in-out,
+                    padding .3s ease-in-out;
+        @include media("<=lg") {
+            display: none;
+        }
+    }
+
+    &__button-mobile {
+        display: none;
+        font-size: 14px;
+        @include media("<=lg") {
+            display: block;
+            margin-top: 30px;
+            padding: 14px 50px;
+            width: 100%;
+        }
+    }
+
+    &__wrap-menu {
+        margin-left: auto;
+        @include media("<=lg") { 
+            position: absolute;
+            left: 0;
+            top: 100%;
+            // height: calc(100% - 150px);
+            width: 100%;
+            background-color: var(--background);
+            padding: 30px 15px;
+            border-top: 1px solid rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: visibility .3s ease-in-out,
+                        opacity .3s ease-in-out;
+        }
+    }
+
+    &.is-open &__wrap-menu {
+        @include media("<=lg") {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    &__menu {
+        transition: font-size .3s ease-in-out;
+    }
+
+    &__menu-list {
+        @include media("<=lg") {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 20px;
+        }
+    }
+
+    &__contacts {
+        display: none;
+        flex-direction: column;
+        margin-top: 30px;
+        @include media("<=lg") {
+            display: flex;
+        }
+    }
+    &__contact {
+        font-family: var(--font-title);
+        text-transform: uppercase;
+        color: #80A87B;
+        transition: color .3s ease;
+        font-size: 16px;
+        &:hover {
+            color: var(--text);
+        }
+    }
+    &__socials {
+        margin-top: 10px;
+        display: none;
+        align-items: center;
+        gap: 20px;
+        @include media("<=lg") {
+            display: flex;
+        }
+    }
+}

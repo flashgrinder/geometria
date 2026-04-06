@@ -1,1 +1,3 @@
-import "../blocks/passes/passes.js";
+import "../blocks/header/header.js";
+import "../blocks/top/top.js";
+import "../blocks/team/team.js";
