@@ -2,6 +2,7 @@
 
 .footer {
     padding: 50px 0 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.25);
     @include media("<=md") {
         padding: 75px 0 20px;
     }
