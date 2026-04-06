@@ -1,7 +1,15 @@
 @use 'lib' as *;
 
 .error404 {
+    background-image: url(../img/bg-error404.webp);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     padding: 0 0 fluid(150px, 75px);
+    @include media("<=md") {
+        background-size: 100%;
+    }
+
 	$self: &;
 
     &__image {
