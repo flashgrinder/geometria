@@ -1,0 +1,155 @@
+@use 'lib' as *;
+
+.contacts {
+    background-image: url(../img/contacts/bg-contacts.webp);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: fluid(120px, 15px) 0 fluid(100px, 50px);
+    @include media("<=md") {
+        background-size: 100%;
+    }
+
+	$self: &;
+
+    &__heading.title {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        text-transform: uppercase;
+        max-width: fluid(933px, 310px, 1366px, 390px);;
+        // line-height: 1;
+        margin-bottom: 100px;
+        @include media("<=md") {
+            margin-bottom: 45px;
+        }
+        span {
+            position: relative;
+            display: inline-block;
+            align-self: flex-start;
+            z-index: 1;
+            &::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background-color: var(--background);
+                pointer-events: none;
+                z-index: -1;
+            }
+        }
+        span:first-child {
+            color: var(--main-black);
+            -webkit-text-fill-color: var(--main-black);
+        }
+        span:last-child {
+            align-self: flex-end;
+            color: var(--main-green);
+            -webkit-text-fill-color: var(--main-green);
+        }
+        &::before {
+            content: "";
+            position: absolute;
+            right: -120px;
+            width: 1500px;
+            border: 3px solid var(--main-green);
+            border-radius: 50px;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+            height: fluid(100px, 42px, 1366px, 390px);
+            pointer-events: none;
+            z-index: 0;
+            @include media("<=sm") {
+                right: -35px;
+            }
+        }
+    }
+
+    &__columns {
+        display: flex;
+        justify-content: space-between;
+        gap: 100px;
+        @include media("<=lg") {
+            flex-direction: column;
+            gap: 40px;
+        }
+    }
+
+    &__col--right {
+        max-width: 846px;
+        width: 100%;
+        @include media("<=xxxlg") {
+            max-width: 700px;
+        }
+        @include media("<=xxlg") {
+            max-width: 600px;
+        }
+        @include media("<=lg") {
+            max-width: 100%;
+        }
+    }
+
+    &__items {
+        display: flex;
+        flex-direction: column;
+        align-self: flex-start;
+        gap: 40px;
+        @include media("<=lg") {
+            gap: 10px;
+        }
+    }
+
+    &__item {
+        font-family: var(--font-title);
+        text-transform: uppercase;
+        color: var(--main-black);
+        font-size: fluid(32px, 15px, 1920px);
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        transition: color .3s ease;
+        @include media("<=xxxlg") {
+            font-size: 24px;
+        }
+        @include media("<=xxlg") {
+            font-size: 20px;
+        }
+        @include media("<=lg") {
+            gap: 10px;
+        }
+        @include media("<=sm") {
+            font-size: 15px;
+        }
+
+        &:hover {
+            color: var(--main-green);
+        }
+        &-icon {
+            width: fluid(50px, 30px, 1920px, 1100px);
+        }
+    }
+
+    &__col-title {
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        @include media("<=md") {
+            font-size: 20px;
+        }
+    }
+    &__col-subtitle {
+        font-size: 20px;
+        @include media("<=md") {
+            font-size: 16px;
+        }
+    }
+    &__form {
+        margin-top: 40px;
+        @include media("<=md") {
+            margin-top: 20px;
+        }
+    }
+}

@@ -37,6 +37,9 @@ body, html {
 
 main {
     padding-top: 160px;
+    @include media("<=md") {
+        padding-top: 65px;
+    }
 }
 
 .sprite {
