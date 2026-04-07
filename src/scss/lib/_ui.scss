@@ -40,7 +40,9 @@ img {
     &--light {
         font-weight: 300;
     }
-    span {
+    span,
+    strong,
+    b {
         background: var(--main-gradient);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;

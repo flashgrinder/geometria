@@ -1,0 +1,152 @@
+@use 'lib' as *;
+
+.case-detail {
+    padding: fluid(120px, 15px) 0 fluid(100px, 50px);
+    background-image: url(../img/cases/bg-case-detail.webp);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    $self: &;
+
+    &__header {
+        @include media("<=lg") {
+            margin-bottom: 60px;
+        }
+    }
+
+    &__heading.title {
+        margin-bottom: 40px;
+        text-transform: uppercase;
+        max-width: 1000px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        @include media("<=lg") {
+            margin-bottom: 30px;
+        }
+        @include media("<=sm") {
+            font-size: 28px;
+        }
+        span {
+            position: relative;
+            display: inline-block;
+            z-index: 1;
+        }
+        span:first-child {
+            color: var(--main-black);
+            -webkit-text-fill-color: var(--main-black);
+        }
+    }
+
+    &__tags {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+
+    &__tag {
+        font-size: 12px;
+        padding: 8px 40px;
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+            ". . result"
+            ". done result"
+            "task done result";
+        gap: 40px;
+        align-items: start;
+        margin-top: -200px;
+        margin-bottom: 60px;
+
+        @include media("<=lg") {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
+            grid-template-areas:
+                "task"
+                "done"
+                "result";
+            margin-top: auto;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+    }
+
+    &__block {
+        padding: 60px;
+        border-radius: 30px;
+        background-color: transparent;
+        border: 1px solid var(--main-green);
+        height: 100%;
+        @include media("<=xxxlg") {
+            padding: 40px;
+        }
+        @include media("<=lg") {
+            padding: 30px;
+        }
+        &--task {
+            grid-area: task;
+            min-height: 302px;
+            @include media("<=lg") {
+                min-height: auto;
+            }
+        }
+        &--done {
+            grid-area: done;
+            min-height: 530px;
+            @include media("<=lg") {
+                min-height: auto;
+            }
+        }
+        &--result {
+            grid-area: result;
+            min-height: 736px;
+            background: var(--main-gradient);
+            color: var(--white);
+            @include media("<=lg") {
+                padding: 40px 30px;
+                min-height: auto;
+            }
+            .case-detail__block-title {
+                color: var(--white);
+                margin-bottom: 60px;
+                @include media("<=lg") {
+                    margin-bottom: 30px;
+                }
+            }
+            .case-detail__block-text {
+                color: inherit;
+                font-size: fluid(30px, 20px);
+            }
+        }
+        &-title {
+            margin-bottom: 34px;
+            text-transform: uppercase;
+            white-space: nowrap;
+            @include media("<=lg") {
+                margin-bottom: 20px;
+            }
+        }
+        &-text {
+            font-size: fluid(20px, 14px);
+            color: rgba(0, 0, 0, 0.75);
+        }
+    }
+    &__result-item {
+        margin-bottom: 40px;
+        padding-bottom: 40px;
+        border-bottom: 1px solid var(--white);
+        @include media("<=lg") {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+        }
+    }
+    &__result-value {
+        font-size: fluid(30px, 20px);
+    }
+}

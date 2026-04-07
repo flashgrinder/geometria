@@ -1,0 +1,108 @@
+@@include("_head.html", {"id":"case-detail"})
+@@include("_header.html")
+
+<main class="main">
+
+    <section class="case-detail">
+        <div class="case-detail__container container">
+
+            <div class="breadcrumbs">
+                <div class="breadcrumbs__container">
+                    <p class="breadcrumbs__inner" id="breadcrumbs">
+                        <span>
+                            <span>
+                                <a class="breadcrumbs__item" href="/">
+                                    Главная
+                                </a>
+                            </span>
+                             / 
+                            <span>
+                                <a class="breadcrumbs__item" href="/catalog/">
+                                    Кейсы
+                                </a>
+                            </span>
+                             / 
+                            <span class="breadcrumbs_last">
+                                Рейтинг 5,0 в Яндексе: отзывы стали работать на клинику
+                            </span>
+                        </span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Header -->
+            <header class="case-detail__header">
+                <h1 class="case-detail__heading title title--60">
+                    <span>РЕЙТИНГ 5,0 В ЯНДЕКСЕ:</span>
+                    <span>ОТЗЫВЫ СТАЛИ РАБОТАТЬ НА КЛИНИКУ</span>
+                </h1>
+                
+                <div class="case-detail__tags">
+                    <a href="" class="case-detail__tag btn"><span>МЕДИЦИНСКАЯ КЛИНИКА</span></a>
+                    <a href="" class="case-detail__tag btn"><span>РЕКЛАМНАЯ КОМПАНИЯ</span></a>
+                    <a href="" class="case-detail__tag btn"><span>PR</span></a>
+                </div>
+            </header>
+
+            <!-- Content Grid -->
+            <div class="case-detail__grid">
+                
+                <!-- Task Block (левый, маленький) -->
+                <div class="case-detail__block case-detail__block--task">
+                    <h2 class="case-detail__block-title title title--32">→ ЗАДАЧА</h2>
+                    <p class="case-detail__block-text text">
+                        Поднять рейтинг и выстроить понятную систему реакции на недовольство пациентов.
+                    </p>
+                </div>
+
+                <!-- What Done Block (центральный, средний) -->
+                <div class="case-detail__block case-detail__block--done">
+                    <h2 class="case-detail__block-title title title--32"><span>→ ЧТО СДЕЛАЛИ</span></h2>
+                    <p class="case-detail__block-text text"> 
+                        Настроили работу с обратной связью: внедрили автоматизированный nps-опрос, если появляется низкая оценка, <span>руководитель связывается с пациентом</span>, выясняет причину и помогает решить проблему — до того, как она уйдёт в публичный негатив.
+                    </p>
+                </div>
+
+                <!-- Result Block (правый, большой) -->
+                <div class="case-detail__block case-detail__block--result">
+                    <h2 class="case-detail__block-title title title--60">→ РЕЗУЛЬТАТ</h2>
+                    <div class="case-detail__result-item">
+                        <span class="case-detail__result-value">Рейтинг в Яндексе: 5,0</span>
+                    </div>
+                    <p class="case-detail__block-text">
+                        Меньше негативных отзывов благодаря быстрой личной реакции и исправлению ситуации
+                    </p>
+                </div>
+
+            </div>
+
+            <section class="photo-gallery">
+                <div class="photo-gallery__container">
+                    <div class="photo-gallery__grid">
+                        
+                        <!-- Большое фото слева -->
+                        <div class="photo-gallery__item photo-gallery__item--large">
+                            <img src="https://placebeard.it/1200/900" class="photo-gallery__image" data-fancybox="gallery-case">
+                        </div>
+
+                        <!-- Маленькое фото справа (верхнее) -->
+                        <div class="photo-gallery__item photo-gallery__item--small">
+                            <img src="https://placebeard.it/1300/600" class="photo-gallery__image" data-fancybox="gallery-case">
+                        </div>
+
+                        <!-- Маленькое фото справа (нижнее) -->
+                        <div class="photo-gallery__item photo-gallery__item--small">
+                            <img src="https://placebeard.it/1024/768" class="photo-gallery__image" data-fancybox="gallery-case">
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </section>
+
+</main>
+
+<!-- @@include("_modals.html") -->
+@@include("_footer.html")

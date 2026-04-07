@@ -1,0 +1,54 @@
+@use 'lib' as *;
+
+.photo-gallery {
+
+    $self: &;
+
+    &__grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 40% 60%;
+        gap: 20px;
+        @include media("<=sm") {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
+        }
+    }
+    
+    &__item {
+        background-color: #ccc;
+        border-radius: 20px;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    
+    &__item--large {
+        grid-row: 1 / -1;
+        @include media("<=sm") {
+            grid-row: auto;
+        }
+    }
+    
+    &__item--small-top {
+        grid-row: 1;
+        @include media("<=sm") {
+            grid-row: auto;
+        }
+    }
+    
+    &__item--small-bottom {
+        grid-row: 2;
+        @include media("<=sm") {
+            grid-row: auto;
+        }
+    }
+    
+    &__image {
+        width: 100%;
+        height: 100%;
+        background-color: #ccc;
+        min-height: 260px;
+        object-fit: cover;
+    }
+}
