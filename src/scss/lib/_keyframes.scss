@@ -29,3 +29,16 @@
         filter: blur(2px);
     }
 }
+
+
+@keyframes leftRightGo {
+    0% {
+        transform: translateX(0px);
+    }
+    50% {
+        transform: translateX(-10px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
