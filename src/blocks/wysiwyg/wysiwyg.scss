@@ -1,0 +1,145 @@
+@use 'lib' as *;
+
+.wysiwyg {
+  font-family: var(--font);
+  color: var(--main-black);
+  font-size: 16px;
+}
+
+.wysiwyg h1,
+.wysiwyg h2,
+.wysiwyg h3,
+.wysiwyg h4,
+.wysiwyg h5,
+.wysiwyg h6 {
+  font-family: var(--font-title);
+  margin: 0 0 24px;
+}
+
+.wysiwyg h2 {
+    font-size: 24px;
+    @include media("<=sm") {
+        font-size: 20px;
+    }
+}
+
+.wysiwyg h3 {
+    font-size: 20px;
+    @include media("<=sm") {
+        font-size: 18px;
+    }
+}
+
+.wysiwyg h4 {
+    font-size: 18px;
+    @include media("<=sm") {
+        font-size: 16px;
+    }
+}
+
+.wysiwyg h5 {
+    font-size: 16px;
+    @include media("<=sm") {
+        font-size: 14px;
+    }
+}
+
+.wysiwyg ul,
+.wysiwyg ol {
+    padding-left: 25px;
+    font-weight: 400;
+    margin-left: 0;
+    font-size: 16px;
+    opacity: .7;
+}
+
+.wysiwyg ul li::marker,
+.wysiwyg ol li::marker {
+    font-size: 14px;
+}
+
+.wysiwyg ul li ~ li,
+.wysiwyg ol li ~ li {
+    margin-top: 14px;
+}
+
+.wysiwyg table {
+    width: 100%;
+    margin-bottom: 20px;
+    border: 1px solid var(--disabled);
+    border-collapse: collapse;
+}
+
+.wysiwyg table th {
+    font-weight: bold;
+    padding: 5px;
+    background: #efefef;
+    border: 1px solid var(--disabled);
+}
+
+.wysiwyg table td {
+    border: 1px solid var(--disabled);
+    padding: 5px;
+}
+
+.wysiwyg ul li {
+    list-style-type: disc;
+}
+
+.wysiwyg ul li > ul,
+.wysiwyg ol li > ol {
+    margin-top: 20px;
+}
+
+.wysiwyg p {
+    font-weight: 300;
+    font-size: 16px;
+    opacity: .7;
+}
+
+.wysiwyg p + p {
+    margin-top: 24px;
+}
+
+.wysiwyg p + ul,
+.wysiwyg p + ol,
+.wysiwyg ul + p,
+.wysiwyg ol + p,
+.wysiwyg p + h2,
+.wysiwyg p + h3,
+.wysiwyg p + h4,
+.wysiwyg h2 + p,
+.wysiwyg h3 + p,
+.wysiwyg h4 + p {
+    margin-top: 20px;
+}
+
+.wysiwyg p + picture,
+.wysiwyg picture + p {
+    margin-top: 42px;
+}
+
+.wysiwyg picture,
+.wysiwyg img {
+    display: block;
+    border-radius: 20px;
+}
+
+.wysiwyg p + h1,
+.wysiwyg p + h2,
+.wysiwyg p + h3,
+.wysiwyg p + h4,
+.wysiwyg p + h5 {
+    margin-bottom: 20px;
+}
+
+.wysiwyg a {
+    text-decoration: underline;
+    background: var(--main-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+}
+
+.wysiwyg a:hover {
+    -webkit-text-fill-color: var(--main-green);
+}
