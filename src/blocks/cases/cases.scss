@@ -81,7 +81,7 @@
             transform: translateY(-4px);
         }
         &::before {
-            content: url(../img/cases/decor-cases.webp);
+            content: url(./img/cases/decor-cases.webp);
             position: absolute;
             right: 0;
             bottom: 0;
@@ -183,7 +183,7 @@
     }
 
     &.cases--index {
-        background-image: url(../img/cases/bg-cases.webp);
+        background-image: url(./img/cases/bg-cases.webp);
         background-repeat: no-repeat;
         background-position: center;
         background-size: 100%;
