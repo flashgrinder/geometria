@@ -29,7 +29,6 @@ body, html {
 	display: flex;
 	flex-flow: column nowrap;
     overflow-x: hidden;
-    // height: 100%;
     @include media("<=sm") {
         font-size: 14px;
     }

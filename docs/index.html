@@ -5,17 +5,21 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="shortcut icon" href="images/favicon.ico">
-	<link rel="stylesheet" href="style.css?v=1775671402478">
+	<link rel="stylesheet" href="style.css?v=1776186752016">
 	<title></title>
 </head>
 
-<body id="home">
+<body class="is-page-loading" id="home">
+	<div class="site-preloader" aria-hidden="true">
+		<div class="site-preloader__logo"></div>
+	</div>
+
 <header class="header js-mobile-main-menu">
     <div class="header__body container">
 		<div class="header__inner">
-			<div class="header__logo">
+			<a href="./" class="header__logo">
 				<img src="./img/logo.svg" alt="">
-			</div>
+            </a>
             <div class="header__wrap-menu">
                 <nav class="header__menu menu">
                     <ul class="header__menu-list menu__list">
@@ -168,58 +172,62 @@
 </section>
 	<section class="hero">
     <div class="hero__top container">
-        <h2 class="hero__heading title title--100">Когда маркетинг <br> <span>— это хаос</span></h2>
+        <h2 class="hero__heading title title--100 js-anime-title">Когда маркетинг <br> <span>— это хаос</span></h2>
     </div>
-    <div class="hearo__outer">
-        <div class="hero__container">
-            <!-- Левая часть - проблемы -->
-            <div class="hero__left hero-side hero-side--dark">
-                <ul class="hero__problems hero-side__list">
-                    <li class="hero__title hero-side__title hero-side__title--blurred title">
-                        ШУМ В КАНАЛАХ
-                    </li>
-                    <li class="hero__problem-item hero-side__item">
-                        <span class="hero__problem-text hero-side__text title title--40">БЮДЖЕТЫ УТЕКАЮТ</span>
-                    </li>
-                    <li class="hero__problem-item hero-side__item">
-                        <span class="hero__problem-text hero-side__text title title--40">НЕТ СИСТЕМЫ</span>
-                    </li>
-                </ul>
-            </div>
-    
-            <!-- Правая часть - решение -->
-            <div class="hero__right hero-side hero-side--light">
-                <h3 class="hero__title hero-side__title title title--60">
-                    МЫ ПРИВОДИМ ВСЁ К
-                    <span class="hero__title-highlight"> ПОРЯДКУ</span>
-                </h3>
-                
-                <div class="hero__formula formula">
-                    <div class="hero__formula-row formula__row--top">
-                        <div class="hero__formula-item hero__formula-item--left">
-                            <span class="hero__formula-text title">ЧЁТКАЯ<br>СТРАТЕГИЯ</span>
+    <div class="hero__scene">
+        <div class="hearo__outer hero__sticky">
+            <div class="hero__container">
+                <!-- Левая часть - проблемы -->
+                <div class="hero__left hero-side hero-side--dark">
+                    <ul class="hero__problems hero-side__list">
+                        <li class="hero__title hero-side__title hero-side__title--blurred title">
+                            ШУМ В КАНАЛАХ
+                        </li>
+                        <li class="hero__problem-item hero-side__item">
+                            <span class="hero__problem-text hero-side__text title title--40">БЮДЖЕТЫ УТЕКАЮТ</span>
+                        </li>
+                        <li class="hero__problem-item hero-side__item">
+                            <span class="hero__problem-text hero-side__text title title--40">НЕТ СИСТЕМЫ</span>
+                        </li>
+                    </ul>
+                </div>
+        
+                <!-- Правая часть - решение -->
+                <div class="hero__right hero-side hero-side--light">
+                    <h3 class="hero__title hero-side__title title title--60">
+                        МЫ ПРИВОДИМ ВСЁ К
+                        <span class="hero__title-highlight"> ПОРЯДКУ</span>
+                    </h3>
+                    
+                    <div class="hero__formula formula">
+                        <div class="hero__formula-row formula__row--top">
+                            <div class="hero__formula-item hero__formula-item--left">
+                                <span class="hero__formula-text title">ЧЁТКАЯ<br>СТРАТЕГИЯ</span>
+                            </div>
+                            <div class="hero__formula-operator hero__formula-operator--plus">
+                                <span class="hero__formula-symbol">×</span>
+                            </div>
+                            <div class="hero__formula-item hero__formula-item--right">
+                                <span class="hero__formula-text title">СИЛЬНЫЙ<br>КРЕАТИВ</span>
+                            </div>
                         </div>
-                        <div class="hero__formula-operator hero__formula-operator--plus">
-                            <span class="hero__formula-symbol">×</span>
+
+                        <div class="hero__formula-equals">
+                            <span class="hero__formula-equals-sign">=</span>
                         </div>
-                        <div class="hero__formula-item hero__formula-item--right">
-                            <span class="hero__formula-text title">СИЛЬНЫЙ<br>КРЕАТИВ</span>
+                        <div class="hero__formula-result">
+                            <span class="hero__formula-result-text title">ПОНЯТНЫЕ РЕЗУЛЬТАТЫ</span>
                         </div>
-                    </div>
-                    <div class="hero__formula-equals">
-                        <span class="hero__formula-equals-sign">=</span>
-                    </div>
-                    <div class="hero__formula-result">
-                        <span class="hero__formula-result-text title">ПОНЯТНЫЕ РЕЗУЛЬТАТЫ</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
 	<section class="services" id="services">
     <div class="services__top container">
-        <h2 class="services__heading title title--100">ЧТО МЫ <br> <span>УМЕЕМ</span></h2>
+        <h2 class="services__heading title title--100 js-anime-title">ЧТО МЫ <br> <span>УМЕЕМ</span></h2>
     </div>
     <div class="services__wrapper container--full">
         <div class="services__list">
@@ -295,9 +303,10 @@
         </div>
     </div>
 </section>
+
 	<section class="cases cases--home">
     <div class="cases__container container">
-        <h2 class="cases__heading title title--100">
+        <h2 class="cases__heading title title--100 js-anime-title">
             Наши <br> <span>кейсы</span>
         </h2>
         <div class="cases__layout">
@@ -383,9 +392,10 @@
         </div>
     </div>
 </section>
+
 	<section class="team" id="team">
     <div class="team__container container">
-        <h2 class="team__heading title title--100">
+        <h2 class="team__heading title title--100 js-anime-title">
             Наша <br />
             <span>команда</span>
         </h2>
@@ -460,10 +470,79 @@
         </div>
     </div>
 </section>
+
+	<section class="process">
+    <div class="process__container container">
+        <div class="process__head">
+            <h2 class="process__heading title title--100 js-anime-title">
+                ПРОЦЕСС <br>
+                <span>РАБОТЫ</span>
+            </h2>
+        </div>
+
+        <div class="process__timeline">
+            <article class="process-step is-active">
+                <div class="process-step__top">
+                    <div class="process-step__number title">1</div>
+                </div>
+                <div class="process-step__line"></div>
+                <div class="process-step__body">
+                    <h3 class="process-step__title title title--32">ПОГРУЖЕНИЕ <br>И ДИАГНОСТИКА</h3>
+                    <p class="process-step__time text">3-7 дней</p>
+                </div>
+            </article>
+
+            <article class="process-step">
+                <div class="process-step__top">
+                    <div class="process-step__number title">2</div>
+                </div>
+                <div class="process-step__line"></div>
+                <div class="process-step__body">
+                    <h3 class="process-step__title title title--32">СТРАТЕГИЯ <br>И ПЛАН</h3>
+                    <p class="process-step__time text">3-7 дней</p>
+                </div>
+            </article>
+
+            <article class="process-step">
+                <div class="process-step__top">
+                    <div class="process-step__number title">3</div>
+                </div>
+                <div class="process-step__line"></div>
+                <div class="process-step__body">
+                    <h3 class="process-step__title title title--32">КРЕАТИВ <br>И ПРОИЗВОДСТВО</h3>
+                    <p class="process-step__time text">3-7 дней</p>
+                </div>
+            </article>
+
+            <article class="process-step">
+                <div class="process-step__top">
+                    <div class="process-step__number title">4</div>
+                </div>
+                <div class="process-step__line"></div>
+                <div class="process-step__body">
+                    <h3 class="process-step__title title title--32">ЗАПУСК <br>И ТЕСТИРОВАНИЕ</h3>
+                    <p class="process-step__time text">3-7 дней</p>
+                </div>
+            </article>
+
+            <article class="process-step">
+                <div class="process-step__top">
+                    <div class="process-step__number title">5</div>
+                </div>
+                <div class="process-step__line"></div>
+                <div class="process-step__body">
+                    <h3 class="process-step__title title title--32">АНАЛИТИКА <br>И МАСШТАБИРОВАНИЕ</h3>
+                    <p class="process-step__time text">3-7 дней</p>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
 	<section class="form-section">
     <div class="form-section__container container">
         <div class="form-section__top">
-            <h3 class="form-section__heading title title--100">
+            <h3 class="form-section__heading title title--100 js-anime-title">
                 Начнём строить <br> <span>вашу геометрию?</span>
             </h3>
             <p class="form-section__subtitle text text--light">
@@ -553,6 +632,7 @@
 		</div>
 	</div>
 </div>
+
 </main>
 
 
@@ -638,6 +718,6 @@
     </div>
 </footer>
 
-<script src="common.js?v=1775671402478"></script>
+<script src="common.js?v=1776186752016"></script>
 </body>
 </html>

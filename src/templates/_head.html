@@ -9,4 +9,7 @@
 	<title></title>
 </head>
 
-<body @@if(this.id){id="@@id"}>
+<body class="is-page-loading" @@if(this.id){id="@@id"}>
+	<div class="site-preloader" aria-hidden="true">
+		<div class="site-preloader__logo"></div>
+	</div>

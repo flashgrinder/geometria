@@ -1,3 +1,10 @@
 import "../blocks/header/header.js";
+import "../blocks/anime-title/anime-title.js";
+import "../blocks/hero/hero.js";
 import "../blocks/top/top.js";
+import "../blocks/top/top-cards.js";
+import "../blocks/cases/cases-animate.js";
+import "../blocks/services/services.js";
 import "../blocks/team/team.js";
+import "../blocks/team/team-animate.js";
+import "../blocks/process/process.js";

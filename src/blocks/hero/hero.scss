@@ -4,6 +4,14 @@
     padding: fluid(75px, 37px) 0;
 }
 
+.hero__scene {
+    position: relative;
+}
+
+.hero__sticky {
+    position: relative;
+}
+
 .hero__heading {
     text-transform: uppercase;
     margin-bottom: 100px;
@@ -16,6 +24,9 @@
     display: flex;
     min-height: 100vh;
     width: 100%;
+    @include media("<=md") {
+        min-height: auto;
+    }
 }
 
 .hero__container {

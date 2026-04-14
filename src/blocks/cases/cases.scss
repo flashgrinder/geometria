@@ -48,7 +48,6 @@
         padding: 40px 10px 10px 40px;
         min-height: 400px;
         overflow: hidden;
-        transition: transform 0.3s ease;
         @include media("<=xlg") {
             padding: 20px 10px 10px 20px;
         }
@@ -76,9 +75,6 @@
                     height: auto;
                 }
             }
-        }
-        &:hover {
-            transform: translateY(-4px);
         }
         &::before {
             content: url(./img/cases/decor-cases.webp);

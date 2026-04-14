@@ -69,8 +69,10 @@
 	"dependencies": {
 		"@fancyapps/ui": "^6.0.26",
 		"enquire": "^0.0.2",
+		"gsap": "^3.15.0",
 		"hystmodal": "^1.0.1",
 		"imask": "^7.6.1",
+		"lottie-web": "^5.13.0",
 		"resize-observer-polyfill": "^1.5.1",
 		"scroll-lock": "^2.1.5",
 		"simplebar": "^6.3.0",
