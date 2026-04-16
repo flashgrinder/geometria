@@ -52,9 +52,10 @@ function initFirstVisitPreloader() {
     const preloader = body.querySelector(".site-preloader");
     if (!preloader) return Promise.resolve();
 
+    body.classList.remove("is-page-loading", "is-page-leaving", "is-page-ready");
     body.classList.add("is-preloader-active");
     preloader.classList.remove("is-leaving");
-    preloader.classList.remove("is-visible");
+    preloader.classList.add("is-visible"); 
 
     const logo = preloader.querySelector(".site-preloader__logo");
     if (!logo) return Promise.resolve();
@@ -87,10 +88,6 @@ function initFirstVisitPreloader() {
             }, 600);
         };
 
-        requestAnimationFrame(() => {
-            preloader.classList.add("is-visible");
-        });
-
         animation.addEventListener("complete", () => {
             animationDone = true;
             finalize();
@@ -111,13 +108,24 @@ function initFirstVisitPreloader() {
 
 function initPageTransitions() {
     const body = document.body;
+    const html = document.documentElement;
 
     if (!body) return;
 
     const TRANSITION_DURATION = 650;
+    const hasFirstVisitPreloader = html.classList.contains("has-first-visit-preloader");
 
     const isModifiedEvent = (event) =>
         event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0;
+
+    const isSameDocumentAnchor = (url) => {
+        return (
+            url.origin === window.location.origin &&
+            url.pathname === window.location.pathname &&
+            url.search === window.location.search &&
+            url.hash
+        );
+    };
 
     const shouldHandleLink = (link) => {
         if (!link) return false;
@@ -134,23 +142,37 @@ function initPageTransitions() {
         const url = new URL(link.href, window.location.href);
 
         if (url.origin !== window.location.origin) return false;
+        if (isSameDocumentAnchor(url)) return false;
         if (url.href === window.location.href) return false;
 
         return true;
     };
 
-    const revealPage = () => {
+    const revealPage = ({ skipReadyState = false } = {}) => {
         body.classList.remove("is-page-loading", "is-page-leaving");
+
+        if (skipReadyState) {
+            body.classList.remove("is-page-ready");
+            requestAnimationFrame(() => {
+                html.classList.remove("has-first-visit-preloader");
+            });
+            return;
+        }
+
         requestAnimationFrame(() => {
             body.classList.add("is-page-ready");
         });
     };
 
     initFirstVisitPreloader().then(() => {
-        revealPage();
+        revealPage({ skipReadyState: hasFirstVisitPreloader });
     });
 
     window.addEventListener("pageshow", () => {
+        revealPage();
+    });
+
+    window.addEventListener("hashchange", () => {
         revealPage();
     });
 
@@ -170,7 +192,93 @@ function initPageTransitions() {
     });
 }
 
-document.addEventListener("DOMContentLoaded", initPageTransitions);
+function initCasesInfiniteScroll() {
+    const feed = document.querySelector(".js-cases-feed");
+    const trigger = document.querySelector(".js-cases-load-trigger");
+    const ajaxUrl = window.geometriaData?.ajaxUrl;
+    const nonce = window.geometriaData?.casesNonce;
+
+    if (!feed || !trigger || !ajaxUrl || !nonce) return;
+
+    let currentPage = Number(feed.dataset.currentPage || 1);
+    let maxPages = Number(feed.dataset.maxPages || 1);
+    let isLoading = false;
+
+    if (currentPage >= maxPages) {
+        trigger.remove();
+        return;
+    }
+
+    const loadMoreCases = async () => {
+        if (isLoading || currentPage >= maxPages) return;
+
+        isLoading = true;
+        feed.classList.add("is-loading");
+
+        const body = new URLSearchParams({
+            action: "geometria_load_cases",
+            nonce,
+            page: String(currentPage + 1),
+            post_type: feed.dataset.postType || "cases",
+        });
+
+        if (feed.dataset.taxonomy && feed.dataset.termId) {
+            body.set("taxonomy", feed.dataset.taxonomy);
+            body.set("term_id", feed.dataset.termId);
+        }
+
+        try {
+            const response = await fetch(ajaxUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+                },
+                body: body.toString(),
+            });
+
+            const result = await response.json();
+
+            if (!response.ok || !result?.success) {
+                throw new Error("Cases load failed");
+            }
+
+            feed.insertAdjacentHTML("beforeend", result.data.html || "");
+            currentPage = Number(result.data.currentPage || currentPage + 1);
+            maxPages = Number(result.data.maxPages || maxPages);
+            feed.dataset.currentPage = String(currentPage);
+            feed.dataset.maxPages = String(maxPages);
+
+            if (!result.data.hasMore || currentPage >= maxPages) {
+                observer.disconnect();
+                trigger.remove();
+            }
+        } catch (error) {
+            feed.classList.remove("is-loading");
+            isLoading = false;
+            return;
+        }
+
+        feed.classList.remove("is-loading");
+        isLoading = false;
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                loadMoreCases();
+            }
+        });
+    }, {
+        rootMargin: "300px 0px",
+    });
+
+    observer.observe(trigger);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    initPageTransitions();
+    initCasesInfiniteScroll();
+});
 
 /* Old services scroll logic disabled after GSAP rewrite.
 document.addEventListener('DOMContentLoaded', () => {

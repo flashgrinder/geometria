@@ -38,6 +38,12 @@ body::before {
     transition: opacity 0.65s ease, visibility 0.65s ease, transform 0.65s ease;
 }
 
+html.has-first-visit-preloader body::before {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(100%) !important;
+}
+
 body.is-page-loading {
     opacity: 1;
 }
@@ -81,6 +87,13 @@ body.is-page-loading .site-preloader {
     pointer-events: auto;
 }
 
+html.has-first-visit-preloader body.is-page-loading .site-preloader {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
 .site-preloader.is-visible {
     opacity: 1;
     visibility: visible;
@@ -89,7 +102,7 @@ body.is-page-loading .site-preloader {
 }
 
 .site-preloader.is-leaving {
-    opacity: 1;
+    opacity: 0;
     visibility: visible;
     transform: translateY(-100%);
     pointer-events: none;

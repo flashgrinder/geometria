@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="shortcut icon" href="images/favicon.ico">
-	<link rel="stylesheet" href="style.css?v=1776186752016">
+	<link rel="stylesheet" href="style.css?v=1776382547538">
 	<title></title>
 </head>
 
@@ -205,9 +205,12 @@
             </p>
         </div>
         <div class="form-section__wrapper">
-            <form action="./upload/" class="form-section__form form form--modal js-form-1"
+            <form action="./upload/" class="form-section__form form form--modal submitting js-form-1"
 				  enctype="multipart/form-data"
 				  method="post">
+                <div class="form-loader">
+                    <div class="loader"></div>
+                </div>
 				<label class="form__field">
 					<input class="form__input js-input" type="text" name="name" placeholder="Имя">
                     <span class="wpcf7-not-valid-tip" aria-hidden="true">Важно заполнить это поле.</span>
@@ -372,6 +375,6 @@
     </div>
 </footer>
 
-<script src="common.js?v=1776186752016"></script>
+<script src="common.js?v=1776382547538"></script>
 </body>
 </html>

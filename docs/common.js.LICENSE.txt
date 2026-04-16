@@ -27,6 +27,8 @@
 
 /*! License details at fancyapps.com/license */
 
+/*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */
+
 /**
  * tua-body-scroll-lock v1.6.3
  * (c) 2026 Evinma, BuptStEve

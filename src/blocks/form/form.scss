@@ -1,6 +1,8 @@
 @use 'lib' as *;
 
 .form {
+    position: relative;
+
 	$self: &;
 
 	&__field {
@@ -124,7 +126,13 @@
         position: absolute;
         left: 0;
         width: 100%;
-        top: -5px;
+        top: -20px;
+        @include media("<=md") {
+            font-size: 10px;
+        }
+    }
+    .wpcf7-list-item {
+        margin: 0;
     }
 }
 
