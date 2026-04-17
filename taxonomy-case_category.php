@@ -9,7 +9,7 @@ $max_pages = max(1, (int) $wp_query->max_num_pages);
 ?>
 
 <main class="main">
-	<section class="cases cases--index">
+	<section class="cases cases--index cases--category">
 		<div class="cases__container container">
 			<h1 class="cases__heading title title--100">
 				<span>Кейсы</span>

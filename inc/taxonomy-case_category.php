@@ -17,6 +17,7 @@ add_action('init', function () {
 		],
 		'public' => true,
 		'hierarchical' => true,
+		'query_var' => 'case_category',
 		'show_in_rest' => true,
 		'show_admin_column' => true,
 		'rewrite' => [
@@ -25,4 +26,16 @@ add_action('init', function () {
 			'hierarchical' => true,
 		],
 	]);
+
+	add_rewrite_rule(
+		'^cases/category/(.+?)/page/([0-9]{1,})/?$',
+		'index.php?case_category=$matches[1]&paged=$matches[2]',
+		'top'
+	);
+
+	add_rewrite_rule(
+		'^cases/category/(.+?)/?$',
+		'index.php?case_category=$matches[1]',
+		'top'
+	);
 });

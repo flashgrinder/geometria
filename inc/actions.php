@@ -41,6 +41,21 @@ add_action('pre_get_posts', function ($query) {
 	}
 });
 
+add_action('init', function () {
+	if (!is_admin()) {
+		return;
+	}
+
+	$rewrite_version = '2026-04-17-case-category-rewrite';
+
+	if (get_option('geometria_rewrite_version') === $rewrite_version) {
+		return;
+	}
+
+	flush_rewrite_rules(false);
+	update_option('geometria_rewrite_version', $rewrite_version);
+}, 20);
+
 add_action('acf/init', function () {
 	if (!function_exists('acf_add_options_page')) {
 		return;
