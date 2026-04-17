@@ -299,6 +299,24 @@
         }
     }
 
+    &.cases--category.cases--index {
+        .cases__heading {
+            max-width: 100%;
+            &.title span:last-child {
+                align-self: center;
+                background: var(--main-gradient);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+            &.title span::after {
+                content: none;
+            }
+        }
+        .cases__heading::before {
+            content: none;
+        }
+    }
+
 }
 
 .cases__item {
