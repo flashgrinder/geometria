@@ -1,4 +1,5 @@
 import "../blocks/header/header.js";
+import "../blocks/cookie-notifier/cookie-notifier.js";
 import "../blocks/anime-title/anime-title.js";
 import "../blocks/hero/hero.js";
 import "../blocks/top/top.js";

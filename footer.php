@@ -179,5 +179,25 @@ $sprite_markup = file_exists($sprite_path) ? file_get_contents($sprite_path) : '
 	</div>
 </footer>
 <?php wp_footer(); ?>
+
+<div class="cookie-notifier" data-cookie-notifier="" id="js-cookie-note">
+	<div class="cookie-notifier__info">
+		<div class="cookie-notifier__title text">
+			Мы используем файлы <a class="cookie-notifier_policy" href="https://geometriasmislov.com/politika-v-otnoshenii-fajlov-cookie/">cookies</a>
+		</div>
+		<div class="cookie-notifier__text text">
+			Для улучшения работы сайта. Продолжая пользоваться сайтом, Вы даёте согласие на использование файлов <a class="cookie-notifier_policy" href="https://geometriasmislov.com/politika-v-otnoshenii-fajlov-cookie/">cookies</a>.
+		</div>
+		<div class="cookie-notifier__excerpt text">
+			Если Вы не согласны на использование файлов cookies, Вам необходимо установить специальные настройки в браузере или покинуть сайт.
+		</div>
+	</div>
+	<div class="cookie-notifier__btn">
+		<button type="button" class="btn btn--second js-cookie-accept">
+			<span>Согласен (а)</span>
+		</button>
+	</div>
+</div>
+
 </body>
 </html>

@@ -1,0 +1,49 @@
+@use 'lib' as *;
+
+.cookie-notifier {
+	position: fixed;
+	z-index: 1001;
+	left: 20%;
+	right: 20%;
+	bottom: 16px;
+	padding: 20px;
+	background: #FFFFFF;
+	display: none;
+	gap: 20px;
+	align-items: center;
+	box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+	border-radius: 20px;
+	box-sizing: border-box;
+    font-size: 14px;
+    @include media("<=md") {
+        left: 20px;
+        right: 20px;
+    }
+	@include media("<=sm") {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+.cookie-notifier.show {
+	display: flex;
+}
+
+.cookie-notifier__text {
+	margin-top: 8px;
+}
+
+.cookie-notifier__excerpt {
+	margin-top: 4px;
+}
+
+.cookie-notifier__title a,
+.cookie-notifier__text a {
+	text-decoration: underline;
+}
+
+.cookie-notifier__btn .btn {
+	white-space: nowrap;
+    font-size: 14px;
+    padding: 9px 25px;
+}

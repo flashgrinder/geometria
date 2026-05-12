@@ -68,7 +68,7 @@ $subtitle = $get_acf_value('form_subtitle', 'Заполните заявку и 
 				<div class="modal__subtitle modal__subtitle--first title title--32">Мы внимательно изучим вашу заявку и ответим в ближайшее время</div>
 				<div class="modal__subtitle modal__subtitle--second title title--32">А пока вы ждете ответа, посмотрите наши кейсы</div>
 			</div>
-			<a href="" class="modal__thanks-btn btn btn--second">
+			<a href="/cases/" class="modal__thanks-btn btn btn--second">
 				<span>Смотреть наши кейсы</span>
 			</a>
 		</div>

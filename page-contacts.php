@@ -114,6 +114,29 @@ $user_agreement_url = !empty($theme_user_agreement['url']) ? $theme_user_agreeme
 			</div>
 		</div>
 	</section>
+    <div class="modal modal--thanks hystmodal js-modal-success" id="thanks" aria-hidden="true">
+        <div class="modal__wrap hystmodal__wrap">
+            <div class="modal__body hystmodal__window" role="dialog" aria-modal="true">
+                <button data-hystclose class="modal__close hystmodal__close">Close</button>
+                <div class="modal__header">
+                    <div class="modal__title">
+                        <div class="modal__word-wrap">
+                            <div class="modal__word title title--100">Спасибо</div>
+                            <div class="modal__subtext text">Вы только что сделали шаг к росту бизнеса!</div>
+                        </div>
+                        <div class="modal__word modal__word--second title title--100">
+                            <span>Заявка отправлена</span>
+                        </div>
+                    </div>
+                    <div class="modal__subtitle modal__subtitle--first title title--32">Мы внимательно изучим вашу заявку и ответим в ближайшее время</div>
+                    <div class="modal__subtitle modal__subtitle--second title title--32">А пока вы ждете ответа, посмотрите наши кейсы</div>
+                </div>
+                <a href="/cases/" class="modal__thanks-btn btn btn--second">
+                    <span>Смотреть наши кейсы</span>
+                </a>
+            </div>
+        </div>
+    </div>
 </main>
 
 <?php get_footer(); ?>
