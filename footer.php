@@ -6,6 +6,8 @@ $theme_footer_cta_text = function_exists('get_field') ? get_field('theme_footer_
 $theme_footer_cta_link = function_exists('get_field') ? get_field('theme_footer_cta_link', 'option') : '';
 $theme_privacy_policy_url = function_exists('get_field') ? get_field('theme_privacy_policy_url', 'option') : '';
 $theme_personal_data_policy_url = function_exists('get_field') ? get_field('theme_personal_data_policy_url', 'option') : '';
+$theme_opinion_service_url = function_exists('get_field') ? get_field('theme_opinion_service_url', 'option') : '';
+$theme_price_service_url = function_exists('get_field') ? get_field('theme_price_service_url', 'option') : '';
 $theme_socials = function_exists('get_field') ? get_field('theme_socials', 'option') : [];
 $theme_footer_requisites_link = function_exists('get_field') ? get_field('theme_footer_requisites_link', 'option') : [];
 $theme_footer_copyright = function_exists('get_field') ? get_field('theme_footer_copyright', 'option') : '';
@@ -18,12 +20,18 @@ $theme_footer_cta_text = $theme_footer_cta_text ?: 'Рассчитать про�
 $theme_footer_cta_link = $theme_footer_cta_link ?: home_url('/#contact-form');
 $theme_privacy_policy_link = is_array($theme_privacy_policy_url) ? $theme_privacy_policy_url : [];
 $theme_personal_data_policy_link = is_array($theme_personal_data_policy_url) ? $theme_personal_data_policy_url : [];
+$theme_opinion_service_link = is_array($theme_opinion_service_url) ? $theme_opinion_service_url : [];
+$theme_price_service_link = is_array($theme_price_service_url) ? $theme_price_service_url : [];
 $theme_footer_requisites_link = is_array($theme_footer_requisites_link) ? $theme_footer_requisites_link : [];
 
 $theme_privacy_policy_href = !empty($theme_privacy_policy_link['url']) ? $theme_privacy_policy_link['url'] : '#';
 $theme_privacy_policy_title = !empty($theme_privacy_policy_link['title']) ? $theme_privacy_policy_link['title'] : 'Политика конфиденциальности';
 $theme_personal_data_policy_href = !empty($theme_personal_data_policy_link['url']) ? $theme_personal_data_policy_link['url'] : '#';
 $theme_personal_data_policy_title = !empty($theme_personal_data_policy_link['title']) ? $theme_personal_data_policy_link['title'] : 'Политика обработки персональных данных';
+$theme_opinion_service_href = !empty($theme_opinion_service_link['url']) ? $theme_opinion_service_link['url'] : '#';
+$theme_opinion_service_title = !empty($theme_opinion_service_link['title']) ? $theme_opinion_service_link['title'] : 'Условия предоставления и доставки услуг и товаров';
+$theme_price_service_href = !empty($theme_price_service_link['url']) ? $theme_price_service_link['url'] : '#';
+$theme_price_service_title = !empty($theme_price_service_link['title']) ? $theme_price_service_link['title'] : 'Прайс';
 $theme_footer_requisites_href = !empty($theme_footer_requisites_link['url']) ? $theme_footer_requisites_link['url'] : '';
 $theme_footer_requisites_title = !empty($theme_footer_requisites_link['title']) ? $theme_footer_requisites_link['title'] : 'Реквизиты';
 $theme_footer_copyright = $theme_footer_copyright ?: 'Геометрия Смыслов ©{year}';
@@ -146,6 +154,12 @@ $sprite_markup = file_exists($sprite_path) ? file_get_contents($sprite_path) : '
 				</a>
 				<a href="<?php echo esc_url($theme_personal_data_policy_href); ?>" class="footer__policy text text--light">
 					<?php echo esc_html($theme_personal_data_policy_title); ?>
+				</a>
+                <a href="<?php echo esc_url($theme_opinion_service_href); ?>" class="footer__policy text text--light">
+					<?php echo esc_html($theme_opinion_service_title); ?>
+				</a>
+                <a href="<?php echo esc_url($theme_price_service_href); ?>" class="footer__policy text text--light">
+					<?php echo esc_html($theme_price_service_title); ?>
 				</a>
 			</div>
 			<div class="footer__col footer__col--last">
