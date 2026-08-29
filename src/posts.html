@@ -1,0 +1,68 @@
+@@include("_head.html", {"id": "posts"})
+@@include("_header.html")
+
+	<main class="main">
+		<section class="articles">
+			<div class="articles__container container">
+				<div class="breadcrumb articles__breadcrumb">
+					<div class="breadcrumb__container">
+						<div class="breadcrumbs__body">
+							<p id="breadcrumb" class="breadcrumb__inner"><span><span><a href="/">Главная</a></span> — <span class="breadcrumb_last">Полезные материалы</span></span></p>
+						</div>
+					</div>
+				</div>
+
+				<h1 class="articles__heading title title--100"><span>Полезные</span><span>материалы</span></h1>
+
+				<div class="articles__filters" aria-label="Категории статей">
+					<button type="button" class="articles__filter articles__filter--active btn"><span>Все статьи</span></button>
+					<button type="button" class="articles__filter btn"><span>Маркетинг</span></button>
+					<button type="button" class="articles__filter btn"><span>Брендинг</span></button>
+					<button type="button" class="articles__filter btn"><span>PR</span></button>
+					<button type="button" class="articles__filter btn"><span>SMM</span></button>
+				</div>
+
+				<div class="articles__grid" id="articles-list">
+					<article class="article-card">
+						<div class="article-card__meta"><time class="article-card__date" datetime="2026-08-14">14.08.2026</time><span class="article-card__reading-time">Время прочтения: 5 минут</span></div>
+						<div class="article-card__content"><h2 class="article-card__title text text--24 text--light"><a href="#"><span>Как выстроить сильный бренд и не потерять смысл</span><span class="article-card__arrow">&rarr;</span></a></h2><p class="article-card__excerpt text text--light">Разбираемся, из чего складывается узнаваемый образ компании и почему стратегия всегда начинается с честного разговора о продукте.</p></div>
+						<div class="article-card__footer"><div class="article-card__categories"><span class="article-card__category btn"><span>Брендинг</span></span><span class="article-card__category btn"><span>Стратегия</span></span></div></div>
+					</article>
+
+					<article class="article-card">
+						<div class="article-card__meta"><time class="article-card__date" datetime="2026-08-05">05.08.2026</time><span class="article-card__reading-time">Время прочтения: 7 минут</span></div>
+						<div class="article-card__content"><h2 class="article-card__title text text--24 text--light"><a href="#"><span>Коммуникационная стратегия: с чего начать</span><span class="article-card__arrow">&rarr;</span></a></h2><p class="article-card__excerpt text text--light">Пошаговый план для команды, которая хочет говорить с аудиторией последовательно, понятно и на одном языке.</p></div>
+						<div class="article-card__footer"><div class="article-card__categories"><span class="article-card__category btn"><span>Маркетинг</span></span><span class="article-card__category btn"><span>PR</span></span></div></div>
+					</article>
+
+					<article class="article-card">
+						<div class="article-card__meta"><time class="article-card__date" datetime="2026-07-28">28.07.2026</time><span class="article-card__reading-time">Время прочтения: 6 минут</span></div>
+						<div class="article-card__content"><h2 class="article-card__title text text--24 text--light"><a href="#"><span>Контент, который помогает бизнесу расти</span><span class="article-card__arrow">&rarr;</span></a></h2><p class="article-card__excerpt text text--light">Как превратить публикации в рабочий инструмент бренда: определить задачи, выбрать форматы и выстроить регулярный процесс.</p></div>
+						<div class="article-card__footer"><div class="article-card__categories"><span class="article-card__category btn"><span>Контент</span></span><span class="article-card__category btn"><span>SMM</span></span></div></div>
+					</article>
+
+					<article class="article-card">
+						<div class="article-card__meta"><time class="article-card__date" datetime="2026-07-16">16.07.2026</time><span class="article-card__reading-time">Время прочтения: 8 минут</span></div>
+						<div class="article-card__content"><h2 class="article-card__title text text--24 text--light"><a href="#"><span>Почему бренду важно быть последовательным</span><span class="article-card__arrow">&rarr;</span></a></h2><p class="article-card__excerpt text text--light">Объясняем, как единая логика визуальных решений и коммуникаций влияет на доверие аудитории и результат продвижения.</p></div>
+						<div class="article-card__footer"><div class="article-card__categories"><span class="article-card__category btn"><span>Брендинг</span></span></div></div>
+					</article>
+
+					<article class="article-card">
+						<div class="article-card__meta"><time class="article-card__date" datetime="2026-07-09">09.07.2026</time><span class="article-card__reading-time">Время прочтения: 4 минуты</span></div>
+						<div class="article-card__content"><h2 class="article-card__title text text--24 text--light"><a href="#"><span>Как оценивать эффективность продвижения</span><span class="article-card__arrow">&rarr;</span></a></h2><p class="article-card__excerpt text text--light">Собрали основные показатели, которые помогают увидеть реальный эффект маркетинга и принимать решения на основе данных.</p></div>
+						<div class="article-card__footer"><div class="article-card__categories"><span class="article-card__category btn"><span>Маркетинг</span></span><span class="article-card__category btn"><span>Аналитика</span></span></div></div>
+					</article>
+
+					<article class="article-card">
+						<div class="article-card__meta"><time class="article-card__date" datetime="2026-06-30">30.06.2026</time><span class="article-card__reading-time">Время прочтения: 5 минут</span></div>
+						<div class="article-card__content"><h2 class="article-card__title text text--24 text--light"><a href="#"><span>Как сохранить смысл в ежедневных коммуникациях</span><span class="article-card__arrow">&rarr;</span></a></h2><p class="article-card__excerpt text text--light">Практические ориентиры, которые помогают команде сохранять единый тон бренда в разных форматах и каналах.</p></div>
+						<div class="article-card__footer"><div class="article-card__categories"><span class="article-card__category btn"><span>Коммуникации</span></span></div></div>
+					</article>
+				</div>
+
+				<div class="articles__actions"><a href="#articles-list" class="articles__more btn btn--second"><span>Смотреть все статьи</span></a></div>
+			</div>
+		</section>
+	</main>
+
+@@include("_footer.html")

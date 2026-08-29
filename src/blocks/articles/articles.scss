@@ -1,0 +1,126 @@
+@use 'lib' as *;
+
+.articles {
+    padding: fluid(75px, 37px) 0;
+    background-image: url(./img/cases/bg-cases.webp);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    overflow: hidden;
+    $self: &;
+
+    &__breadcrumb {
+        margin-bottom: 0;
+    }
+
+    &__heading {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        max-width: fluid(980px, 335px, 1920px, 390px);
+        margin-bottom: 80px;
+        font-size: fluid(100px, 36px, 1920px, 390px);
+        text-transform: uppercase;
+
+        @include media("<=md") {
+            margin-bottom: 45px;
+        }
+
+        span {
+            position: relative;
+            display: inline-block;
+            align-self: flex-start;
+            z-index: 1;
+            color: var(--main-black);
+            -webkit-text-fill-color: var(--main-black);
+
+            &::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: var(--background);
+                z-index: -1;
+            }
+        }
+
+        span:last-child {
+            align-self: flex-end;
+            color: var(--main-green);
+            -webkit-text-fill-color: var(--main-green);
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: fluid(-175px, -38px, 1920px, 390px);
+            width: fluid(1260px, 430px, 1920px, 390px);
+            height: fluid(100px, 42px, 1366px, 390px);
+            border: 3px solid var(--main-green);
+            border-radius: 100px;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+    }
+
+    &__filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 40px;
+
+        @include media("<=md") {
+            margin-bottom: 20px;
+        }
+    }
+
+    &__filter {
+        min-height: 44px;
+        padding: 10px 34px;
+        font-size: 14px;
+
+        &--active {
+            color: var(--white);
+
+            &::before {
+                opacity: 1;
+            }
+        }
+
+        @include media("<=sm") {
+            min-height: 36px;
+            padding: 8px 20px;
+            font-size: 11px;
+        }
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+
+        @include media("<=md") {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        justify-content: center;
+        margin-top: 75px;
+
+        @include media("<=md") {
+            margin-top: 40px;
+        }
+    }
+
+    &__more {
+        width: min(480px, 100%);
+
+        @include media("<=sm") {
+            padding-right: 20px;
+            padding-left: 20px;
+            font-size: 13px;
+        }
+    }
+}
