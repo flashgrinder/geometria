@@ -1,13 +1,30 @@
 @use 'lib' as *;
 
 .articles {
+    position: relative;
     padding: fluid(75px, 37px) 0;
-    background-image: url(./img/cases/bg-cases.webp);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100%;
     overflow: hidden;
     $self: &;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        height: var(--articles-decoration-height, 100%);
+        background-image: url(./img/cases/bg-cases.webp);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100%;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    &__container {
+        position: relative;
+        z-index: 1;
+    }
 
     &__breadcrumb {
         margin-bottom: 0;
@@ -116,6 +133,17 @@
 
     &__more {
         width: min(480px, 100%);
+
+        &:disabled,
+        &:disabled:hover {
+            background: transparent;
+            color: var(--white);
+        }
+
+        &:disabled::before,
+        &:disabled:hover::before {
+            opacity: 1;
+        }
 
         @include media("<=sm") {
             padding-right: 20px;

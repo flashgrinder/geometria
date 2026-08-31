@@ -275,9 +275,91 @@ function initCasesInfiniteScroll() {
     observer.observe(trigger);
 }
 
+function initArticlesLoadMore() {
+    const feed = document.querySelector(".js-articles-feed");
+    const actions = document.querySelector(".js-articles-actions");
+    const button = document.querySelector(".js-articles-load-more");
+    const ajaxUrl = window.geometriaData?.ajaxUrl;
+    const nonce = window.geometriaData?.articlesNonce;
+
+    if (!feed || !actions || !button || !ajaxUrl || !nonce) return;
+
+    let currentPage = Number(feed.dataset.currentPage || 1);
+    let maxPages = Number(feed.dataset.maxPages || 1);
+    let isLoading = false;
+    const articles = feed.closest(".articles");
+
+    if (articles) {
+        articles.style.setProperty("--articles-decoration-height", `${articles.offsetHeight}px`);
+    }
+
+    if (currentPage >= maxPages) {
+        actions.remove();
+        return;
+    }
+
+    button.addEventListener("click", async () => {
+        if (isLoading || currentPage >= maxPages) return;
+
+        isLoading = true;
+        button.disabled = true;
+        feed.classList.add("is-loading");
+
+        const body = new URLSearchParams({
+            action: "geometria_load_articles",
+            nonce,
+            page: String(currentPage + 1),
+        });
+
+        if (feed.dataset.categoryId) {
+            body.set("category_id", feed.dataset.categoryId);
+        }
+
+        try {
+            const response = await fetch(ajaxUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+                },
+                body: body.toString(),
+            });
+
+            const result = await response.json();
+
+            if (!response.ok || !result?.success) {
+                throw new Error("Articles load failed");
+            }
+
+            feed.insertAdjacentHTML("beforeend", result.data.html || "");
+            currentPage = Number(result.data.currentPage || currentPage + 1);
+            maxPages = Number(result.data.maxPages || maxPages);
+            feed.dataset.currentPage = String(currentPage);
+            feed.dataset.maxPages = String(maxPages);
+
+            const url = new URL(window.location.href);
+            url.searchParams.set("page", String(currentPage));
+            window.history.replaceState({ page: currentPage }, "", url);
+
+            if (!result.data.hasMore || currentPage >= maxPages) {
+                actions.remove();
+            }
+        } catch (error) {
+            button.disabled = false;
+        } finally {
+            feed.classList.remove("is-loading");
+            isLoading = false;
+
+            if (document.body.contains(button)) {
+                button.disabled = false;
+            }
+        }
+    });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     initPageTransitions();
     initCasesInfiniteScroll();
+    initArticlesLoadMore();
 });
 
 /* Old services scroll logic disabled after GSAP rewrite.

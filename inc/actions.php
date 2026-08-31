@@ -36,10 +36,25 @@ add_action('pre_get_posts', function ($query) {
 		return;
 	}
 
+	if ($query->is_home() || $query->is_category()) {
+		$query->set('posts_per_page', 6 * geometria_get_articles_page());
+		$query->set('ignore_sticky_posts', true);
+	}
+
 	if ($query->is_post_type_archive('cases') || $query->is_tax('case_category')) {
 		$query->set('posts_per_page', 7);
 	}
 });
+
+function geometria_get_articles_page() {
+	if (!isset($_GET['page'])) {
+		return 1;
+	}
+
+	$page = wp_unslash($_GET['page']);
+
+	return is_scalar($page) ? max(1, absint($page)) : 1;
+}
 
 add_action('init', function () {
 	if (!is_admin()) {
@@ -78,6 +93,8 @@ add_action('wp_enqueue_scripts', function () {
 			'ajaxUrl' => admin_url('admin-ajax.php'),
 			'casesPerPage' => 7,
 			'casesNonce' => wp_create_nonce('geometria_cases_load_more'),
+			'articlesPerPage' => 6,
+			'articlesNonce' => wp_create_nonce('geometria_articles_load_more'),
 		]) . ';',
 		'before'
 	);
@@ -144,6 +161,50 @@ function geometria_load_cases() {
 		while ($query->have_posts()) {
 			$query->the_post();
 			get_template_part('template-parts/cases/card', null, ['post_id' => get_the_ID()]);
+		}
+	}
+
+	wp_reset_postdata();
+
+	wp_send_json_success([
+		'html' => ob_get_clean(),
+		'currentPage' => $page,
+		'maxPages' => (int) $query->max_num_pages,
+		'hasMore' => $page < (int) $query->max_num_pages,
+	]);
+}
+
+add_action('wp_ajax_geometria_load_articles', 'geometria_load_articles');
+add_action('wp_ajax_nopriv_geometria_load_articles', 'geometria_load_articles');
+
+function geometria_load_articles() {
+	check_ajax_referer('geometria_articles_load_more', 'nonce');
+
+	$page_value = isset($_POST['page']) ? wp_unslash($_POST['page']) : 1;
+	$category_value = isset($_POST['category_id']) ? wp_unslash($_POST['category_id']) : 0;
+	$page = is_scalar($page_value) ? max(1, absint($page_value)) : 1;
+	$category_id = is_scalar($category_value) ? absint($category_value) : 0;
+
+	$args = [
+		'post_type' => 'post',
+		'post_status' => 'publish',
+		'posts_per_page' => 6,
+		'paged' => $page,
+		'ignore_sticky_posts' => true,
+	];
+
+	if ($category_id) {
+		$args['category__in'] = [$category_id];
+	}
+
+	$query = new WP_Query($args);
+
+	ob_start();
+
+	if ($query->have_posts()) {
+		while ($query->have_posts()) {
+			$query->the_post();
+			get_template_part('template-parts/articles/card', null, ['post_id' => get_the_ID()]);
 		}
 	}
 
