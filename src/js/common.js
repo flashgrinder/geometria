@@ -132,6 +132,7 @@ function initPageTransitions() {
         if (link.target && link.target !== "_self") return false;
         if (link.hasAttribute("download")) return false;
         if (link.hasAttribute("data-hystmodal")) return false;
+        if (link.hasAttribute("data-fancybox")) return false;
 
         const href = link.getAttribute("href");
 
@@ -356,10 +357,91 @@ function initArticlesLoadMore() {
     });
 }
 
+function initArticleToc() {
+    const toc = document.querySelector(".js-article-toc");
+    const links = Array.from(document.querySelectorAll(".js-article-toc-link"));
+
+    if (!toc || !links.length) return;
+
+    const items = links.map((link) => {
+        const id = link.getAttribute("href")?.slice(1);
+        const heading = id ? document.getElementById(id) : null;
+
+        return heading ? { link, heading } : null;
+    }).filter(Boolean);
+
+    if (!items.length) return;
+
+    const getOffset = () => window.innerWidth <= 1100 ? 80 : 100;
+
+    const setActive = (activeLink) => {
+        links.forEach((link) => {
+            const isActive = link === activeLink;
+            link.classList.toggle("is-active", isActive);
+            link.parentElement?.classList.toggle("is-active", isActive);
+
+            if (isActive) {
+                link.setAttribute("aria-current", "true");
+            } else {
+                link.removeAttribute("aria-current");
+            }
+        });
+    };
+
+    const updateActive = () => {
+        const currentPosition = window.scrollY + getOffset() + 20;
+        let currentItem = items[0];
+
+        items.forEach((item) => {
+            const headingPosition = item.heading.getBoundingClientRect().top + window.scrollY;
+
+            if (headingPosition <= currentPosition) {
+                currentItem = item;
+            }
+        });
+
+        setActive(currentItem.link);
+    };
+
+    links.forEach((link) => {
+        link.addEventListener("click", (event) => {
+            const item = items.find((entry) => entry.link === link);
+            if (!item) return;
+
+            event.preventDefault();
+            const targetPosition = item.heading.getBoundingClientRect().top + window.scrollY - getOffset();
+
+            window.scrollTo({
+                top: targetPosition,
+                behavior: "smooth",
+            });
+
+            window.history.replaceState(null, "", link.getAttribute("href"));
+            setActive(link);
+        });
+    });
+
+    let isTicking = false;
+
+    window.addEventListener("scroll", () => {
+        if (isTicking) return;
+
+        isTicking = true;
+        window.requestAnimationFrame(() => {
+            updateActive();
+            isTicking = false;
+        });
+    });
+
+    window.addEventListener("resize", updateActive);
+    updateActive();
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     initPageTransitions();
     initCasesInfiniteScroll();
     initArticlesLoadMore();
+    initArticleToc();
 });
 
 /* Old services scroll logic disabled after GSAP rewrite.
