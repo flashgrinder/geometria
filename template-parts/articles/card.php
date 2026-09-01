@@ -10,7 +10,7 @@ $categories = get_the_category($post_id);
 <article class="article-card">
 	<div class="article-card__meta">
 		<time class="article-card__date" datetime="<?php echo esc_attr(get_the_date('Y-m-d', $post_id)); ?>"><?php echo esc_html(get_the_date('d.m.Y', $post_id)); ?></time>
-		<span class="article-card__reading-time">Время прочтения: 5 минут</span>
+		<span class="article-card__reading-time"><?php echo esc_html(geometria_get_post_reading_time($post_id)); ?></span>
 	</div>
 	<div class="article-card__content">
 		<h2 class="article-card__title text text--24 text--light">

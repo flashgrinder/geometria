@@ -1,0 +1,96 @@
+{
+    "key": "group_article_post_type",
+    "title": "Поля статьи",
+    "fields": [
+        {
+            "key": "field_article_toc",
+            "label": "Оглавление",
+            "name": "article_toc",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Добавьте пункты оглавления и укажите те же HTML Anchor, что заданы у заголовков в редакторе.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_article_toc_title",
+            "button_label": "Добавить пункт",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_article_toc_title",
+                    "label": "Название пункта",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "60",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "Почему отзывы — это деньги?",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_article_toc"
+                },
+                {
+                    "key": "field_article_toc_anchor",
+                    "label": "Якорь",
+                    "name": "anchor",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Укажите якорь без символа #, например: reputation.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "40",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "reputation",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_article_toc"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1788247448
+}

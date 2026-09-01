@@ -18,7 +18,7 @@
 	</script>
 	<?php wp_head(); ?>
 </head>
-<body <?php body_class('is-page-loading'); ?>>
+<body<?php echo !empty($args['body_id']) ? ' id="' . esc_attr($args['body_id']) . '"' : ''; ?> <?php body_class('is-page-loading'); ?>>
 <?php wp_body_open(); ?>
 <div class="site-preloader" aria-hidden="true">
 	<div class="site-preloader__logo"></div>
