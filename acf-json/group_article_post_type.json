@@ -11,6 +11,7 @@
             "instructions": "Добавьте пункты оглавления и укажите те же HTML Anchor, что заданы у заголовков в редакторе.",
             "required": 0,
             "conditional_logic": 0,
+            "allow_in_bindings": 0,
             "wrapper": {
                 "width": "100",
                 "class": "",
@@ -69,6 +70,35 @@
                     "parent_repeater": "field_article_toc"
                 }
             ]
+        },
+        {
+            "key": "field_article_gallery",
+            "label": "Галерея статьи",
+            "name": "article_gallery",
+            "aria-label": "",
+            "type": "gallery",
+            "instructions": "Добавьте изображения и расположите их в нужном порядке.",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min": "",
+            "max": "",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "insert": "append",
+            "preview_size": "medium"
         }
     ],
     "location": [
@@ -92,5 +122,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1788247448
+    "modified": 1788249600
 }

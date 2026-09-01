@@ -1,36 +1,5 @@
 <?php get_header(null, ['body_id' => 'article-detail']); ?>
 
-<?php
-$get_article_media = static function ($post_id) {
-	$media_ids = [];
-	$thumbnail_id = get_post_thumbnail_id($post_id);
-
-	if ($thumbnail_id) {
-		$media_ids[] = (int) $thumbnail_id;
-	}
-
-	$attachments = get_children([
-		'post_parent' => $post_id,
-		'post_type' => 'attachment',
-		'post_mime_type' => 'image',
-		'post_status' => 'inherit',
-		'orderby' => 'menu_order ID',
-		'order' => 'ASC',
-		'numberposts' => -1,
-	]);
-
-	foreach (array_keys($attachments) as $attachment_id) {
-		$attachment_id = (int) $attachment_id;
-
-		if (!in_array($attachment_id, $media_ids, true)) {
-			$media_ids[] = $attachment_id;
-		}
-	}
-
-	return array_slice($media_ids, 0, 2);
-};
-?>
-
 <main class="main">
 	<?php if (have_posts()) : ?>
 		<?php while (have_posts()) : the_post(); ?>
@@ -51,7 +20,8 @@ $get_article_media = static function ($post_id) {
 				$article_toc
 			))) : [];
 			$article_categories = get_the_category($post_id);
-			$article_media_ids = $get_article_media($post_id);
+			$article_gallery = function_exists('get_field') ? get_field('article_gallery', $post_id) : [];
+			$article_gallery = is_array($article_gallery) ? $article_gallery : [];
 			$articles_url = add_query_arg('post_type', 'post', home_url('/'));
 			?>
 
@@ -105,19 +75,35 @@ $get_article_media = static function ($post_id) {
 						<?php endif; ?>
 					</div>
 
-					<?php if ($article_media_ids) : ?>
+					<?php if ($article_gallery) : ?>
 						<section class="article-detail__media" aria-label="Материалы статьи">
-							<?php foreach ($article_media_ids as $media_id) : ?>
+							<?php foreach ($article_gallery as $gallery_image) : ?>
 								<?php
-								$media_url = wp_get_attachment_image_url($media_id, 'full');
-								$media_caption = wp_get_attachment_caption($media_id);
+								$media_id = isset($gallery_image['ID']) ? (int) $gallery_image['ID'] : 0;
+								$media_url = isset($gallery_image['url']) ? (string) $gallery_image['url'] : '';
+								$media_alt = isset($gallery_image['alt']) ? (string) $gallery_image['alt'] : '';
+								$media_caption = isset($gallery_image['caption']) ? (string) $gallery_image['caption'] : '';
+								$media_width = isset($gallery_image['width']) ? (int) $gallery_image['width'] : 0;
+								$media_height = isset($gallery_image['height']) ? (int) $gallery_image['height'] : 0;
 
 								if (!$media_url) {
 									continue;
 								}
+
+								$media_image = $media_id ? wp_get_attachment_image($media_id, 'large', false, [
+									'class' => 'article-detail__media-image',
+									'alt' => $media_alt,
+									'loading' => 'lazy',
+								]) : sprintf(
+									'<img class="article-detail__media-image" src="%s" alt="%s"%s%s loading="lazy">',
+									esc_url($media_url),
+									esc_attr($media_alt),
+									$media_width ? ' width="' . esc_attr($media_width) . '"' : '',
+									$media_height ? ' height="' . esc_attr($media_height) . '"' : ''
+								);
 								?>
 								<div class="article-detail__media-item">
-									<a class="article-detail__media-link" href="<?php echo esc_url($media_url); ?>" data-fancybox="article-media"<?php echo $media_caption ? ' data-caption="' . esc_attr($media_caption) . '"' : ''; ?>><?php echo wp_get_attachment_image($media_id, 'large', false, ['class' => 'article-detail__media-image', 'loading' => 'lazy']); ?></a>
+									<a class="article-detail__media-link" href="<?php echo esc_url($media_url); ?>" data-fancybox="article-media"<?php echo $media_caption ? ' data-caption="' . esc_attr($media_caption) . '"' : ''; ?>><?php echo $media_image; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></a>
 								</div>
 							<?php endforeach; ?>
 						</section>
